@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { HomeComponent } from './Components/home/home.component';
 import { Section1Component } from './Components/home/section1/section1.component';
 import { Section2Component } from './Components/home/section2/section2.component';
@@ -20,6 +22,10 @@ import { SliderComponent } from './Components/slider/slider.component';
 import { VideoplayerComponent } from './Components/videoplayer/videoplayer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaqComponent } from './Components/home/faq/faq.component';
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 
 @NgModule({
   declarations: [
@@ -41,11 +47,17 @@ import { FaqComponent } from './Components/home/faq/faq.component';
     BrowserModule,
     AppRoutingModule,
     MatFormFieldModule,
+    SlickCarouselModule,
+    HttpClientModule,
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
   ],
   providers: [
 

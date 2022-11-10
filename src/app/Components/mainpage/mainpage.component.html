@@ -1,1 +1,67 @@
-<p>mainpage works!</p>
+<div class="main-container">
+
+    <div class="header">
+        <!-- Banner Area -->
+        <div class="headerBanner" [style.background-image]="'url(&quot;' + myUrlVariable + '&quot;)'">
+            <h2 class="movie-title">LOOPER</h2>
+            <div class="headerButton">
+                <button routerLink="/video" class="playButton">
+                    <mat-icon>arrow_right</mat-icon>
+                    <span>Play</span>
+                </button>
+                <button class="moreButton">
+                    <mat-icon>info</mat-icon>
+                    <span>More info</span>
+                </button>
+
+            </div>
+
+        </div>
+        <!-- Banner ends -->
+        <!-- Main area start -->
+
+        <div class="headerMain" id="stickyHeader" [class.sticky]="sticky" #stickyHeader>
+            <div class="hederLeft">
+                <a routerLink="/">
+                    <img src="https://res.cloudinary.com/dahw90b2z/image/upload/v1667982530/logo_cfqupd.png" />
+                </a>
+                <ul class="listItemLeft">
+                    <li><a class="link" href="#">Home</a></li>
+                    <li><a href="#">TV Shows</a></li>
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">Latest</a></li>
+                    <li><a href="#">My List</a></li>
+                </ul>
+            </div>
+            <div class="headerRight">
+                <ul class="listItemRight">
+                    <li><a href="#">
+                            <mat-icon>search</mat-icon>
+                        </a></li>
+                    <li><a href="#">Children</a></li>
+                    <li><a href="#">
+                            <mat-icon>card_giftcard</mat-icon>
+                        </a></li>
+                    <li><a href="#">
+                            <mat-icon>notifications</mat-icon>
+                        </a></li>
+                    <li>
+                        <img class="avatar-img"
+                            src="https://res.cloudinary.com/dahw90b2z/image/upload/v1662123458/photo-1483985988355-763728e1935b_q9k0ne.avif" />
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Header Main ends here -->
+    <div class="body">
+        <app-slider title="Trending" [movies]="trending" [sliderConfig]="sliderConfig"></app-slider>
+        <app-slider title="Top Rated" [movies]="topRated" [sliderConfig]="sliderConfig"></app-slider>
+        <app-slider title="Now Playing" [movies]="nowPlaying" [sliderConfig]="sliderConfig"></app-slider>
+        <app-slider title="Originals" [movies]="originals" [sliderConfig]="sliderConfig"></app-slider>
+        <app-slider title="Popular" [movies]="popular" [sliderConfig]="sliderConfig"></app-slider>
+
+    </div>
+</div>

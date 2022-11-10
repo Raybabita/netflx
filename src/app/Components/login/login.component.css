@@ -15,15 +15,15 @@
 }
 
 .loginForm {
-
     width: 350px;
     max-width: 450xp;
-    margin-left: 500px;
+    margin-left: 580px;
     background-color: rgba(0, 0, 0, .75);
     border-radius: 4px;
     display: flex;
     padding: 60px;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
