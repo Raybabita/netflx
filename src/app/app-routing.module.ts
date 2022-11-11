@@ -4,6 +4,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { MainpageComponent } from './Components/mainpage/mainpage.component';
 import { VideoplayerComponent } from './Components/videoplayer/videoplayer.component';
+import { UserloginGuard } from './userlogin.guard';
 
 const routes: Routes = [
   {
@@ -11,16 +12,25 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'login', component: LoginComponent
+    path: 'login', component: LoginComponent,
+
   },
   {
     path: 'mainpage',
-    component: MainpageComponent
+    component: MainpageComponent,
+
   },
   {
     path: 'video',
-    component: VideoplayerComponent
+    component: VideoplayerComponent,
+
+  },
+  {
+    path: 'mainpage/video',
+    component: VideoplayerComponent,
+
   }
+
 ];
 
 @NgModule({

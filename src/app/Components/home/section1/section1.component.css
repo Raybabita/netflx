@@ -42,16 +42,15 @@ img {
     position: absolute;
     top: 50%;
     right: 0;
+    cursor: pointer;
     background-color: blueviolet;
     transform: translate(-69%, -50%);
     border: none;
     color: #fff;
     font-size: 15px;
     padding: 10px 20px 10px 20px;
-
     border-radius: 5px;
     margin-bottom: 10px;
-
     background-color: #e50914;
     box-shadow: 0 5px 3px rgba(0, 0, 0, 0.45);
 }
@@ -105,7 +104,6 @@ img {
     left: 0;
     margin-bottom: 10px;
     width: 500px;
-
     height: 70px;
     outline: none;
     font-size: 1rem;
@@ -125,4 +123,64 @@ img {
 
 .btn:hover {
     opacity: 0.9;
+}
+
+@media screen and (max-width: 768px) {
+    .showcase {
+        height: 500px;
+        width: flex;
+    }
+
+    .showcase-top img {
+        width: 90px;
+    }
+
+    .section1Header1 {
+        font-size: 24px;
+        line-height: 1;
+        min-width: 400px;
+
+    }
+
+    .showcase-content {
+        margin-top: 0 10%;
+    }
+
+    .section1Header2 {
+        font-size: 18px;
+    }
+
+    .section1Header3 {
+        font-size: 15px;
+    }
+
+    .inputText {
+        font-size: 10px;
+        height: 40px;
+        width: 200px;
+
+    }
+
+    .btn {
+        font-size: 12px;
+        height: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+        max-width: 140px;
+    }
+
+
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        flex-direction: row;
+    }
+
+    mat-icon {
+        display: none;
+    }
+
 }

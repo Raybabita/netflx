@@ -3,6 +3,7 @@
     <div class="header">
         <!-- Banner Area -->
         <div class="headerBanner" [style.background-image]="'url(&quot;' + myUrlVariable + '&quot;)'">
+
             <h2 class="movie-title">LOOPER</h2>
             <div class="headerButton">
                 <button routerLink="/video" class="playButton">
@@ -26,7 +27,7 @@
                     <img src="https://res.cloudinary.com/dahw90b2z/image/upload/v1667982530/logo_cfqupd.png" />
                 </a>
                 <ul class="listItemLeft">
-                    <li><a class="link" href="#">Home</a></li>
+                    <li><a class="activeClass" href="#">Home</a></li>
                     <li><a href="#">TV Shows</a></li>
                     <li><a href="#">Movies</a></li>
                     <li><a href="#">Latest</a></li>
@@ -35,10 +36,13 @@
             </div>
             <div class="headerRight">
                 <ul class="listItemRight">
-                    <li><a href="#">
+                    <li>
+                        <a class="searchContainer">
+                            <input type="search" (keyup)="onKey($event)">
                             <mat-icon>search</mat-icon>
-                        </a></li>
-                    <li><a href="#">Children</a></li>
+                        </a>
+                    </li>
+                    <li><a (click)="logout()">logout</a></li>
                     <li><a href="#">
                             <mat-icon>card_giftcard</mat-icon>
                         </a></li>
@@ -50,6 +54,24 @@
                             src="https://res.cloudinary.com/dahw90b2z/image/upload/v1662123458/photo-1483985988355-763728e1935b_q9k0ne.avif" />
                     </li>
                 </ul>
+            </div>
+            <!-- mobile hambergermenu -->
+            <div class="mobileView">
+                <button mat-button class="menu-button" (click)="onMenuDisplay()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+
+                <nav *ngIf="isshowMenu">
+                    <ul class="mobileMenu">
+                        <li class="nav-link-s1">Profile</li>
+                        <li class="nav-link-s1">Setttings</li>
+                        <li class="nav-link-s1">Gitf</li>
+                        <li class="nav-link-s1">Notifications</li>
+                        <li class="nav-link-s1" (click)="logout()">Logout</li>
+                    </ul>
+                </nav>
+
+
             </div>
 
         </div>

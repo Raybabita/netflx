@@ -41,3 +41,31 @@ img {
     color: white;
     font-weight: 400;
 }
+
+@media screen and (max-width: 768px) {
+    .card3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .tv-heading {
+        padding: 10px;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .tv-sub-heading {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .card3 img {
+        height: 300px;
+    }
+
+    .card3 video {
+        display: none;
+    }
+}

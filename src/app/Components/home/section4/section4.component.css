@@ -52,3 +52,31 @@
     color: white;
     font-weight: 400;
 }
+
+@media screen and (max-width: 768px) {
+    .card4 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .tv-heading {
+        padding: 10px;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .tv-sub-heading {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .card4 img {
+        height: 300px;
+    }
+
+    .card4 video {
+        display: none;
+    }
+}

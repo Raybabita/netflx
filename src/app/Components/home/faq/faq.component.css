@@ -74,3 +74,44 @@
 .btn:hover {
     opacity: 0.9;
 }
+
+@media screen and (max-width: 768px) {
+    .faqHeading {
+        font-size: 30px;
+    }
+
+    .questions li {
+        min-width: 300px;
+        font-size: 15px;
+    }
+
+
+    .inputText {
+        font-size: 10px;
+        height: 40px;
+        width: 200px;
+
+    }
+
+    .btn {
+        font-size: 12px;
+        height: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+        max-width: 140px;
+    }
+
+
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        flex-direction: row;
+    }
+
+    mat-icon {
+        display: none;
+    }
+}

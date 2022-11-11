@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Movies } from '../Model/movies';
+import { Movies, login, SignUp } from '../Model/movies';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 const enum endpoint {
   latest = '/movie/latest',
@@ -18,13 +21,46 @@ const enum endpoint {
   providedIn: 'root'
 })
 export class MovieserviceService {
+  isUserLoggedIn = new BehaviorSubject<boolean>(false)
+  LoginErrorMsg = new EventEmitter<boolean>(false)
+
+  userSignUp(data: SignUp) {
+    this.http.post('http://localhost:3000/users',
+      data,
+      { observe: 'response' }).subscribe((result) => {
+        this.isUserLoggedIn.next(true);
+        localStorage.setItem('userDatails', JSON.stringify(result.body));
+        // this.router.navigate(['login'])
+        console.log(result);
+      })
+  }
+
+  reloadUser() {
+    if (localStorage.getItem('userDatails')) {
+      this.isUserLoggedIn.next(true);
+      this.router.navigate(['login'])
+    }
+  }
+
+  userLogin(data: login) {
+    console.log(data)
+    this.http.get(`http://localhost:3000/users?email=${data.email}&password=${data.password}`,
+      { observe: 'response' }).subscribe((result: any) => {
+        console.log(result);
+        if (result && result.body && result.body.length) {
+          this.LoginErrorMsg.emit(false)
+          localStorage.setItem('userDatails', JSON.stringify(result.body))
+          this.router.navigate(['mainpage'])
+        } else {
+          console.log("login failed");
+          this.LoginErrorMsg.emit(true)
+        }
+      })
+  }
+
   private URL: string = 'https://api.themoviedb.org/3';
   private api_key = environment.api_key;
-
-
-  constructor(private http: HttpClient) { }
-
-
+  constructor(private http: HttpClient, private router: Router) { }
   getLatestMovie(): Observable<Movies> {
     return this.http.get<Movies>(`${this.URL}${endpoint.latest}`, {
       params: {

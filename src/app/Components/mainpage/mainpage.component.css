@@ -64,6 +64,7 @@
 
 .headerButton button mat-icon {
     transform: scale(1.25);
+    cursor: pointer;
 }
 
 .playButton span {
@@ -78,11 +79,13 @@
 
 .moreButton {
     background-color: rgba(112, 113, 109, 0.7);
+    cursor: pointer;
 
 }
 
 .moreButton mat-icon {
     color: lightgray;
+    cursor: pointer;
 }
 
 .moreButton span {
@@ -197,10 +200,93 @@
     transition: all 0.2s ease;
 }
 
+
+
+
 .listItemRight a :hover {
     color: #696969;
 }
 
 .listItem a:hover {
     color: #696969;
+}
+
+
+@media screen and (max-width: 768px) {
+    .headerButton button {
+        height: 40px;
+    }
+
+    .hederLeft ul {
+        display: none;
+    }
+
+    .headerRight {
+        display: none;
+    }
+
+
+    .menu-button {
+        margin-left: 50px;
+    }
+
+    .mobileView {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobileMenu {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        color: aliceblue;
+
+    }
+
+    .nav-link-s1 {
+        margin-bottom: 10px;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    .nav-link-s1:hover {
+        background: rgb(166, 151, 18);
+        transform: scale(1.5);
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .mobileView {
+        display: none;
+    }
+}
+
+.activeClass {
+    color: white;
+}
+
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    flex-direction: row;
+}
+
+.searchContainer input {
+    height: 40px;
+    outline: none;
+    border: none;
+    min-width: 280px;
+    max-width: 400px;
+    color: black;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.searchContainer mat-icon {
+
+    padding-top: 5px;
+    color: black;
 }

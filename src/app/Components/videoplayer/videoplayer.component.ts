@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class VideoplayerComponent implements OnInit {
   name = 'Video events';
-  videoSource = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4";
+  videoSource = "https://d1imz3dprig39z.cloudfront.net/Marvel+Studios'+Avengers+-+Official+Trailer.mp4";
 
   constructor() { }
 

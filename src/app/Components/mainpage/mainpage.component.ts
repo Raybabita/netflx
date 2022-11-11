@@ -4,6 +4,10 @@ import { Movies } from 'src/app/Model/movies';
 import { Subscription } from 'rxjs';
 import { MovieserviceService } from 'src/app/Services/movieservice.service';
 import { environment } from 'src/environments/environment';
+import {
+  Router
+} from '@angular/router';
+
 
 @Component({
   selector: 'app-mainpage',
@@ -11,6 +15,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./mainpage.component.css']
 })
 export class MainpageComponent implements OnInit, OnDestroy {
+
 
   sticky = false;
   subs: Subscription[] = [];
@@ -21,16 +26,36 @@ export class MainpageComponent implements OnInit, OnDestroy {
   nowPlaying!: Movies;
 
   sliderConfig = {
-    slidesToShow: 9,
+    slidesToShow: 6,
     slidesToScroll: 2,
     arrows: true,
     autoplay: false
   }
+  isshowMenu = false;
+
+  inputValue!: any;
+
+  inputText: string = "I am sample text";
+
+  onKey(event: any) {
+    this.inputValue = event.target.value;
+    console.log(event.target.value)
+  }
+
+  onMenuDisplay() {
+    this.isshowMenu = !this.isshowMenu;
+  }
+  public isMenuOpen: boolean = false;
+  public onSidenavClick(): void {
+    this.isMenuOpen = false;
+  }
+
+
 
   @ViewChild('stickyHeader') header!: ElementRef;
-  headerBGUrl!: string;
+  headerBGUrl!: any;
   myUrlVariable!: string;
-  constructor(private movie: MovieserviceService, private sanitizer: DomSanitizer) {
+  constructor(private movie: MovieserviceService, private sanitizer: DomSanitizer, private route: Router) {
     this.myUrlVariable = 'https://res.cloudinary.com/dahw90b2z/image/upload/v1668097628/im_jvwl1k.webp';
 
   }
@@ -38,11 +63,17 @@ export class MainpageComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.subs.push(this.movie.getTrending().subscribe(data => this.trending = data));
+    this.subs.push(this.movie.getTrending().subscribe(data => {
+      this.trending = data;
+      // this.headerBGUrl = 'https://image.tmdb.org/t/p/original' + this.trending.results[0].backdrop_path;
+    }
+    ));
     this.subs.push(this.movie.getPopularMovies().subscribe(data => this.popular = data));
     this.subs.push(this.movie.getTopRated().subscribe(data => this.topRated = data));
     this.subs.push(this.movie.getOriginals().subscribe(data => this.originals = data));
     this.subs.push(this.movie.getNowPlaying().subscribe(data => this.nowPlaying = data));
+
+
   }
 
 
@@ -61,5 +92,9 @@ export class MainpageComponent implements OnInit, OnDestroy {
     } else {
       this.sticky = false;
     }
+  }
+  logout() {
+    localStorage.removeItem("userDetails");
+    this.route.navigate(['/'])
   }
 }

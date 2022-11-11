@@ -48,3 +48,28 @@
     color: white;
     font-weight: 400;
 }
+
+@media screen and (max-width: 768px) {
+    .card2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tv-heading {
+        font-size: 30px;
+    }
+
+    .tv-sub-heading {
+        font-size: 20px;
+    }
+
+    .card2 img {
+        height: 300px;
+        grid-column: 1/1;
+        grid-row: 1/2;
+    }
+
+    .card2 video {
+        display: none;
+    }
+}
