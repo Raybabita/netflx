@@ -45,10 +45,9 @@ export class MainpageComponent implements OnInit, OnDestroy {
   onMenuDisplay() {
     this.isshowMenu = !this.isshowMenu;
   }
+
   public isMenuOpen: boolean = false;
-  public onSidenavClick(): void {
-    this.isMenuOpen = false;
-  }
+
 
 
 
@@ -93,6 +92,10 @@ export class MainpageComponent implements OnInit, OnDestroy {
       this.sticky = false;
     }
   }
+  onSearch() {
+    this.route.navigate(['/movieSearchList'])
+  }
+
   logout() {
     localStorage.removeItem("userDetails");
     this.route.navigate(['/'])

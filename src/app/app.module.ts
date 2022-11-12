@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,6 +29,9 @@ import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { SearchComponent } from './Components/search/search.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { MovieListComponent } from './Components/movie-list/movie-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MainpageComponent,
     SliderComponent,
     VideoplayerComponent,
-    FaqComponent
+    FaqComponent,
+    SearchComponent,
+    HeaderComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +73,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   providers: [
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

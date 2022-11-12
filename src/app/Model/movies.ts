@@ -6,6 +6,7 @@ export interface Movies {
     total_pages: number;
 }
 export interface ResultsEntity {
+    name: string;
     popularity: number;
     vote_count: number;
     video: boolean;

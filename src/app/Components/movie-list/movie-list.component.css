@@ -1,0 +1,56 @@
+h2 {
+    font-size: x-large;
+    color: white;
+}
+
+img {
+    border-radius: 5px;
+    width: 200px;
+    height: 160px;
+
+
+}
+
+.bgContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+}
+
+h1,
+h5,
+p {
+    color: #fff;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100vw;
+}
+
+.card {
+    background-color: #000;
+    margin: 8px;
+    border-radius: 5px;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

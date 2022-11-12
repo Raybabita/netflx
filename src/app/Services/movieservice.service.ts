@@ -58,9 +58,45 @@ export class MovieserviceService {
       })
   }
 
+  url: string = 'https://api.themoviedb.org/3';
+
+  getLatestMovies(): Observable<any> {
+    return this.http.get<Movies>(this.url + '/movie/latest?api_key=' + environment.api_key)
+  }
+
+  getPopularsMovies(): Observable<Movies> {
+    return this.http.get<Movies>(this.url + '/movie/popular?api_key=' + environment.api_key)
+  }
+
+  getNowPlayingMovies(): Observable<Movies> {
+    return this.http.get<Movies>(this.url + '/movie/now_playing?api_key=' + environment.api_key)
+  }
+
+
+  getTopRatedMovies(): Observable<Movies> {
+    return this.http.get<Movies>(this.url + '/movie/top_rated?api_key=' + environment.api_key)
+  }
+  getUpcomingMovies(): Observable<Movies> {
+    return this.http.get<Movies>(this.url + '/movie/upcoming?api_key=' + environment.api_key)
+  }
+  getTrendingMovies(): Observable<Movies> {
+    return this.http.get<Movies>(this.url + '/trending/all/week?api_key=' + environment.api_key)
+  }
+  getOriginalShows(): Observable<Movies> {
+    return this.http.get<Movies>(this.url + '/discover/tv?api_key=' + environment.api_key)
+  }
+
+
+
+
+
   private URL: string = 'https://api.themoviedb.org/3';
+
   private api_key = environment.api_key;
+
   constructor(private http: HttpClient, private router: Router) { }
+
+
   getLatestMovie(): Observable<Movies> {
     return this.http.get<Movies>(`${this.URL}${endpoint.latest}`, {
       params: {
