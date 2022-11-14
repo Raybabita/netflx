@@ -89,12 +89,23 @@
     transition: all 0.2s ease;
 }
 
+.listItemLeft .activeClass {
+    color: White;
+}
+
+
+
+.listItemLeft :hover {
+    color: White;
+}
+
 .listItemRight {
     list-style: none;
     display: flex;
     align-items: center;
     gap: 20px;
 }
+
 
 .listItemRight a {
     display: inline-block;
@@ -111,12 +122,9 @@
 
 
 
-.listItemRight a :hover {
+.listItemRight li a :hover {
     color: #696969;
-}
-
-.listItem a:hover {
-    color: #696969;
+    transform: scale(1.4);
 }
 
 
@@ -170,16 +178,9 @@
     }
 }
 
-.activeClass {
-    color: white;
-}
-
-
-
 
 
 .searchContainer mat-icon {
-
     padding-top: 5px;
     color: rgb(254, 250, 250);
 }

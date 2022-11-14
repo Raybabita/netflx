@@ -1,8 +1,10 @@
 <div class="main-container">
     <div class="header">
         <!-- Banner Area -->
-        <div class="headerBanner" [style.background-image]="'url(&quot;' + myUrlVariable + '&quot;)'">
-            <h2 class="movie-title">LOOPER</h2>
+        <div class="headerBanner" [ngStyle]="{
+            'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('+headerBGUrl+')'
+            }">
+            <h2 class="movie-title">{{title}}</h2>
             <div class="headerButton">
                 <button routerLink="/video" class="playButton">
                     <mat-icon>arrow_right</mat-icon>

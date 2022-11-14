@@ -32,6 +32,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SearchComponent } from './Components/search/search.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { MovieListComponent } from './Components/movie-list/movie-list.component';
+import { SingleMovieComponent } from './Components/single-movie/single-movie.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MovieListComponent } from './Components/movie-list/movie-list.component
     FaqComponent,
     SearchComponent,
     HeaderComponent,
-    MovieListComponent
+    MovieListComponent,
+    SingleMovieComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,7 @@ import { MovieListComponent } from './Components/movie-list/movie-list.component
     FormsModule, ReactiveFormsModule
   ],
   providers: [
-
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

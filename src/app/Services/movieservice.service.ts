@@ -14,7 +14,8 @@ const enum endpoint {
   top_rated = '/movie/top_rated',
   upcoming = '/movie/upcoming',
   trending = '/trending/all/week',
-  originals = '/discover/tv'
+  originals = '/discover/tv',
+  singleMovie = '/movie/{movie_id}'
 }
 
 @Injectable({
@@ -144,4 +145,16 @@ export class MovieserviceService {
       }
     });
   }
+
+
+
+
+
+  getMovieById(movieId: string): Observable<Movies> {
+    alert(movieId);
+    return this.http.get<Movies>(this.url + 'results?id=' + movieId + this.api_key + environment.api_key)
+
+  }
+
 }
+

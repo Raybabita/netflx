@@ -18,6 +18,9 @@ export class HeaderComponent implements OnInit {
   onSearch() {
     this.route.navigate(['movieSearchList'])
   }
+  onHome() {
+    this.route.navigate(['mainpage'])
+  }
   @ViewChild('stickyHeader') header!: ElementRef;
   headerBGUrl!: any;
   myUrlVariable!: string;

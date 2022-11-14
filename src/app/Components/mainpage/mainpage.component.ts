@@ -53,6 +53,7 @@ export class MainpageComponent implements OnInit, OnDestroy {
 
   @ViewChild('stickyHeader') header!: ElementRef;
   headerBGUrl!: any;
+  title!: any;
   myUrlVariable!: string;
   constructor(private movie: MovieserviceService, private sanitizer: DomSanitizer, private route: Router) {
     this.myUrlVariable = 'https://res.cloudinary.com/dahw90b2z/image/upload/v1668097628/im_jvwl1k.webp';
@@ -64,7 +65,10 @@ export class MainpageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subs.push(this.movie.getTrending().subscribe(data => {
       this.trending = data;
-      // this.headerBGUrl = 'https://image.tmdb.org/t/p/original' + this.trending.results[0].backdrop_path;
+      this.headerBGUrl = 'https://image.tmdb.org/t/p/original' + data?.results?.[1].backdrop_path;
+      console.log(this.headerBGUrl)
+      this.title = data?.results?.[1].title;
+      console.log(this.title)
     }
     ));
     this.subs.push(this.movie.getPopularMovies().subscribe(data => this.popular = data));
@@ -85,13 +89,13 @@ export class MainpageComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:typedef
   handleScroll() {
     const windowScroll = window.pageYOffset;
-
     if (windowScroll >= this.header.nativeElement.offsetHeight) {
       this.sticky = true;
     } else {
       this.sticky = false;
     }
   }
+
   onSearch() {
     this.route.navigate(['/movieSearchList'])
   }

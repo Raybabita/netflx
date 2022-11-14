@@ -35,7 +35,7 @@
     justify-content: center;
 }
 
-.headerBanner h2 {
+.movie-title {
     font-size: 6rem;
     margin-left: 3rem;
     margin-bottom: 6rem;
@@ -85,7 +85,7 @@
 
 .moreButton mat-icon {
     color: lightgray;
-    cursor: pointer;
+    transform: scale(2.5);
 }
 
 .moreButton span {
@@ -95,67 +95,7 @@
 }
 
 /* banner ends */
-/* header start */
-.headerMain {
-    display: flex;
-    padding: 20px;
-    width: 100%;
-    justify-content: space-between;
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    transition: all 0.3s;
-    transition-timing-function: ease-in;
-}
 
-#stickyHeader {
-    background-color: #0D0D0D;
-    z-index: 100;
-}
-
-.hederLeft {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.hederLeft img {
-    margin-left: 40px;
-    height: 100%;
-    width: 100px;
-    margin-top: 5px;
-}
-
-.headerRight ul {
-    flex: 1;
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.headerRight ul li a {
-    color: white;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: normal;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-
-}
-
-.headerRight ul li a mat-icon {
-    margin-top: 5px;
-    font-weight: 600;
-}
-
-.listItemLeft {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
 
 .body {
     overflow-y: hidden;
@@ -169,47 +109,8 @@
     display: none;
 }
 
-.listItemLeft a {
-    display: inline-block;
-    width: fit-content;
-    text-decoration: none;
-    cursor: pointer;
-    color: #a4a4a4;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    transition: all 0.2s ease;
-}
-
-.listItemRight {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.listItemRight a {
-    display: inline-block;
-    width: fit-content;
-    text-decoration: none;
-    cursor: pointer;
-    color: #a4a4a4;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    transition: all 0.2s ease;
-}
 
 
-
-
-.listItemRight a :hover {
-    color: #696969;
-}
-
-.listItem a:hover {
-    color: #696969;
-}
 
 
 @media screen and (max-width: 768px) {
@@ -217,76 +118,45 @@
         height: 40px;
     }
 
-    .hederLeft ul {
-        display: none;
+
+
+    .movie-title {
+        font-size: 2rem;
+
     }
 
-    .headerRight {
-        display: none;
-    }
-
-
-    .menu-button {
-        margin-left: 50px;
-    }
-
-    .mobileView {
+    .headerButton {
         display: flex;
         flex-direction: column;
-    }
-
-    .mobileMenu {
-        display: flex;
-        flex-direction: column;
-        list-style-type: none;
-        color: aliceblue;
+        justify-content: center;
+        align-items: center;
 
     }
 
-    .nav-link-s1 {
-        margin-bottom: 10px;
-        cursor: pointer;
-        padding: 5px;
+    .playButton {
+        margin: 10px;
+
     }
 
-    .nav-link-s1:hover {
-        background: rgb(166, 151, 18);
-        transform: scale(1.5);
+    .playButton span {
+        font-size: 15px;
+    }
+
+    .moreButton span {
+        font-size: 15px;
+
     }
 
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
     .mobileView {
         display: none;
     }
+
+
 }
 
 .activeClass {
     color: white;
-}
-
-.searchContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    flex-direction: row;
-}
-
-.searchContainer input {
-    height: 40px;
-    outline: none;
-    border: none;
-    min-width: 280px;
-    max-width: 400px;
-    color: black;
-    font-size: 16px;
-    padding-left: 10px;
-}
-
-.searchContainer mat-icon {
-
-    padding-top: 5px;
-    color: black;
 }

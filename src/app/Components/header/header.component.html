@@ -4,7 +4,7 @@
             <img src="https://res.cloudinary.com/dahw90b2z/image/upload/v1667982530/logo_cfqupd.png" />
         </a>
         <ul class="listItemLeft">
-            <li><a class="activeClass" href="#">Home</a></li>
+            <li><a class="activeClass" (click)="onHome()">Home</a></li>
             <li><a href="#">TV Shows</a></li>
             <li><a href="#">Movies</a></li>
             <li><a href="#">Latest</a></li>
@@ -14,11 +14,11 @@
     <div class="headerRight">
         <ul class="listItemRight">
             <li>
-                <a class="searchContainer" (click)="onSearch()">
+                <a (click)="onSearch()">
                     <mat-icon>search</mat-icon>
                 </a>
             </li>
-            <li><a (click)="logout()">logout</a></li>
+            <li><a (click)="logout()">LOGOUT</a></li>
             <li><a href="#">
                     <mat-icon>card_giftcard</mat-icon>
                 </a></li>

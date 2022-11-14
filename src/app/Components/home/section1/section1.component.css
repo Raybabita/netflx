@@ -43,7 +43,7 @@ img {
     top: 50%;
     right: 0;
     cursor: pointer;
-    background-color: blueviolet;
+
     transform: translate(-69%, -50%);
     border: none;
     color: #fff;
