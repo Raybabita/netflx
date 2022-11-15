@@ -178,6 +178,15 @@
     }
 }
 
+.totalItem {
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    height: 20px;
+    font-size: 13px;
+    width: 20px;
+    background-color: red;
+}
 
 
 .searchContainer mat-icon {

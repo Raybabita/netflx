@@ -15,9 +15,6 @@ import {
   styleUrls: ['./mainpage.component.css']
 })
 export class MainpageComponent implements OnInit, OnDestroy {
-
-
-  sticky = false;
   subs: Subscription[] = [];
   trending!: Movies;
   popular!: Movies;
@@ -31,37 +28,14 @@ export class MainpageComponent implements OnInit, OnDestroy {
     arrows: true,
     autoplay: false
   }
-  isshowMenu = false;
-
-  inputValue!: any;
-
-  inputText: string = "I am sample text";
-
-  onKey(event: any) {
-    this.inputValue = event.target.value;
-    console.log(event.target.value)
-  }
-
-  onMenuDisplay() {
-    this.isshowMenu = !this.isshowMenu;
-  }
-
-  public isMenuOpen: boolean = false;
-
-
-
-
-  @ViewChild('stickyHeader') header!: ElementRef;
   headerBGUrl!: any;
   title!: any;
-  myUrlVariable!: string;
-  constructor(private movie: MovieserviceService, private sanitizer: DomSanitizer, private route: Router) {
-    this.myUrlVariable = 'https://res.cloudinary.com/dahw90b2z/image/upload/v1668097628/im_jvwl1k.webp';
 
+  constructor(private movie: MovieserviceService, private sanitizer: DomSanitizer, private route: Router) { }
+
+  getUrl() {
+    return this.headerBGUrl;
   }
-
-
-
   ngOnInit(): void {
     this.subs.push(this.movie.getTrending().subscribe(data => {
       this.trending = data;
@@ -75,25 +49,11 @@ export class MainpageComponent implements OnInit, OnDestroy {
     this.subs.push(this.movie.getTopRated().subscribe(data => this.topRated = data));
     this.subs.push(this.movie.getOriginals().subscribe(data => this.originals = data));
     this.subs.push(this.movie.getNowPlaying().subscribe(data => this.nowPlaying = data));
-
-
+    this.getUrl()
   }
-
 
   ngOnDestroy(): void {
     this.subs.map(s => s.unsubscribe());
-  }
-
-
-  @HostListener('window:scroll', ['$event'])
-  // tslint:disable-next-line:typedef
-  handleScroll() {
-    const windowScroll = window.pageYOffset;
-    if (windowScroll >= this.header.nativeElement.offsetHeight) {
-      this.sticky = true;
-    } else {
-      this.sticky = false;
-    }
   }
 
   onSearch() {

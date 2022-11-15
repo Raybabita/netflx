@@ -1,0 +1,76 @@
+.bgcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+.desc {
+    padding-top: 400px;
+    padding-left: 50px;
+}
+
+img {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+.btnContaienr {
+
+    display: flex;
+}
+
+.playListBtn {
+    height: 40px;
+    width: 120px;
+    background-color: aliceblue;
+    border: none;
+    margin-right: 20px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 4px;
+}
+
+.playListBtn:hover {
+    opacity: 0.5;
+}
+
+.playVideoBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 40px;
+    width: 150px;
+    color: red;
+    background-color: aliceblue;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.movieTitle {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.overView {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.playVideoBtn:hover {
+    opacity: 0.5;
+}

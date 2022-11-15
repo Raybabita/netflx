@@ -1,13 +1,15 @@
 <app-header></app-header>
-<app-search (searchTextChange)="onSearchTextEntered($event)"></app-search>
+
 
 <!-- Top Rated Movei -->
 <div class="bgContainer">
+    <app-search (searchTextChange)="onSearchTextEntered($event)"></app-search>
     <div class="container">
         <h1>Top Rated Moveis</h1>
         <div class=" list">
             <div class="card" *ngFor="let pm of topRatedMovies?.results; let i =index">
                 <div *ngIf="searchText ===''|| pm.title.toLowerCase().includes(searchText)">
+
                     <img src="{{pm.backdrop_path}}" />
                     <div class="desc">
                         <h5>{{pm.title}}</h5>
@@ -21,6 +23,7 @@
             </div>
         </div>
     </div>
+
     <!-- Popular Movie -->
     <div class="container">
         <h1>Popular Moveis</h1>

@@ -1,1 +1,12 @@
-<p>single-movie works!</p>
+<app-header></app-header>
+<div class="bgcontainer">
+    <img src="{{headerBGUrl}}" />
+    <div class="desc">
+        <h1 class="movieTitle">{{data?.title}}</h1>
+        <h1 class="overView">{{data?.overview}}</h1>
+        <div class="btnContaienr">
+            <button class="playListBtn" (click)="onAddPlayList(data)">Add to playlist</button>
+            <button class="playVideoBtn" (click)="playVideo()">Play <mat-icon>arrow_right</mat-icon></button>
+        </div>
+    </div>
+</div>

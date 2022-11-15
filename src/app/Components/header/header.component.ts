@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MyplaylistService } from 'src/app/Services/myplaylist.service';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  totalItem: number = 0;
   isshowMenu = false;
   sticky = false;
-  constructor(private route: Router) {
+  constructor(private route: Router, private playlistService: MyplaylistService) {
     this.myUrlVariable = 'https://res.cloudinary.com/dahw90b2z/image/upload/v1668097628/im_jvwl1k.webp';
   }
 
   ngOnInit(): void {
+    this.playlistService.getProducts().subscribe(res => {
+      this.totalItem = res.length;
+    })
   }
   onSearch() {
     this.route.navigate(['movieSearchList'])
@@ -25,12 +30,27 @@ export class HeaderComponent implements OnInit {
   headerBGUrl!: any;
   myUrlVariable!: string;
 
+  @HostListener('window:scroll', ['$event'])
+  // tslint:disable-next-line:typedef
+  handleScroll() {
+    const windowScroll = window.pageYOffset;
+    if (windowScroll >= this.header.nativeElement.offsetHeight) {
+      this.sticky = true;
+    } else {
+      this.sticky = false;
+    }
+  }
+
   onMenuDisplay() {
     this.isshowMenu = !this.isshowMenu;
   }
   logout() {
     localStorage.removeItem("userDetails");
     this.route.navigate(['/'])
+  }
+
+  onMyList() {
+    this.route.navigate(['singleMovie/myPlaylist'])
   }
 
 }

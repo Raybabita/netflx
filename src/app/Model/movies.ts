@@ -4,6 +4,7 @@ export interface Movies {
     total_results: number;
     dates: Dates;
     total_pages: number;
+    backdrops: any;
 }
 export interface ResultsEntity {
     name: string;

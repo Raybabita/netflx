@@ -10,6 +10,7 @@ import { SearchComponent } from './Components/search/search.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { MovieListComponent } from './Components/movie-list/movie-list.component';
 import { SingleMovieComponent } from './Components/single-movie/single-movie.component';
+import { PlayListComponent } from './Components/play-list/play-list.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,11 @@ const routes: Routes = [
     path: 'mainpage/singleMovie/:id',
     component: SingleMovieComponent,
     // canActivate: [UserloginGuard]
+  },
+  {
+    path: 'singleMovie/myPlaylist',
+    component: PlayListComponent,
+    // canActivate: [UserloginGuard]
   }
 
 
@@ -51,6 +57,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [UserloginGuard]
+  // providers: [UserloginGuard]
 })
 export class AppRoutingModule { }

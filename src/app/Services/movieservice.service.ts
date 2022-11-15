@@ -147,14 +147,20 @@ export class MovieserviceService {
   }
 
 
-
-
-
-  getMovieById(movieId: string): Observable<Movies> {
-    alert(movieId);
-    return this.http.get<Movies>(this.url + 'results?id=' + movieId + this.api_key + environment.api_key)
+  getMovieById(id: any): Observable<Movies> {
+    // alert(id);
+    return this.http.get<Movies>(`https://api.themoviedb.org/3/movie/${id}?api_key=` + environment.api_key);
 
   }
+
+
+  getImage(id: any): Observable<Movies> {
+    // alert(id);
+    return this.http.get<Movies>(`https://api.themoviedb.org/3/movie/${id}/images?api_key=` + environment.api_key);
+  }
+
+
+
 
 }
 

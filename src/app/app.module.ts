@@ -33,6 +33,7 @@ import { SearchComponent } from './Components/search/search.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { MovieListComponent } from './Components/movie-list/movie-list.component';
 import { SingleMovieComponent } from './Components/single-movie/single-movie.component';
+import { PlayListComponent } from './Components/play-list/play-list.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { SingleMovieComponent } from './Components/single-movie/single-movie.com
     SearchComponent,
     HeaderComponent,
     MovieListComponent,
-    SingleMovieComponent
+    SingleMovieComponent,
+    PlayListComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,6 @@ import { SingleMovieComponent } from './Components/single-movie/single-movie.com
   providers: [
     HttpClientModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
