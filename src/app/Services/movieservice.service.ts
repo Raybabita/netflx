@@ -25,6 +25,7 @@ export class MovieserviceService {
   isUserLoggedIn = new BehaviorSubject<boolean>(false)
   LoginErrorMsg = new EventEmitter<boolean>(false)
 
+  constructor(private http: HttpClient, private router: Router) { }
   userSignUp(data: SignUp) {
     this.http.post('http://localhost:3000/users',
       data,
@@ -73,7 +74,6 @@ export class MovieserviceService {
     return this.http.get<Movies>(this.url + '/movie/now_playing?api_key=' + environment.api_key)
   }
 
-
   getTopRatedMovies(): Observable<Movies> {
     return this.http.get<Movies>(this.url + '/movie/top_rated?api_key=' + environment.api_key)
   }
@@ -87,79 +87,78 @@ export class MovieserviceService {
     return this.http.get<Movies>(this.url + '/discover/tv?api_key=' + environment.api_key)
   }
 
-
-
-
-
-  private URL: string = 'https://api.themoviedb.org/3';
-
-  private api_key = environment.api_key;
-
-  constructor(private http: HttpClient, private router: Router) { }
-
-
-  getLatestMovie(): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.latest}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-  getNowPlaying(): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.now_playing}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-  getOriginals(): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.originals}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-  getPopularMovies(): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.popular}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-  getTopRated(): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.top_rated}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-  getTrending(): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.trending}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-
   getMovieById(id: any): Observable<Movies> {
     // alert(id);
-    return this.http.get<Movies>(`https://api.themoviedb.org/3/movie/${id}?api_key=` + environment.api_key);
+    return this.http.get<Movies>(`https://api.themoviedb.org/3/movie/${id}?api_key=285bb9715cde096a3fbb2cfdac23701f&append_to_response=videos,images`);
 
   }
 
 
   getImage(id: any): Observable<Movies> {
-    // alert(id);
     return this.http.get<Movies>(`https://api.themoviedb.org/3/movie/${id}/images?api_key=` + environment.api_key);
   }
 
+  getVideo(): Observable<Movies> {
+    // alert(id);
+    return this.http.get<Movies>(`https://api.themoviedb.org/3/movie/157336?api_key=285bb9715cde096a3fbb2cfdac23701f&append_to_response=videos,images`);
 
+  }
+
+
+
+  // private URL: string = 'https://api.themoviedb.org/3';
+
+  // private api_key = environment.api_key;
+
+
+
+  // getLatestMovie(): Observable<Movies> {
+  //   return this.http.get<Movies>(`${this.URL}${endpoint.latest}`, {
+  //     params: {
+  //       api_key: this.api_key
+  //     }
+  //   });
+  // }
+
+  // getNowPlaying(): Observable<Movies> {
+  //   return this.http.get<Movies>(`${this.URL}${endpoint.now_playing}`, {
+  //     params: {
+  //       api_key: this.api_key
+  //     }
+  //   });
+  // }
+
+  // getOriginals(): Observable<Movies> {
+  //   return this.http.get<Movies>(`${this.URL}${endpoint.originals}`, {
+  //     params: {
+  //       api_key: this.api_key
+  //     }
+  //   });
+  // }
+
+  // getPopularMovies(): Observable<Movies> {
+  //   return this.http.get<Movies>(`${this.URL}${endpoint.popular}`, {
+  //     params: {
+  //       api_key: this.api_key
+  //     }
+  //   });
+  // }
+
+  // getTopRated(): Observable<Movies> {
+  //   return this.http.get<Movies>(`${this.URL}${endpoint.top_rated}`, {
+  //     params: {
+  //       api_key: this.api_key
+  //     }
+  //   });
+  // }
+
+  // getTrending(): Observable<Movies> {
+  //   return this.http.get<Movies>(`${this.URL}${endpoint.trending}`, {
+  //     params: {
+  //       api_key: this.api_key
+  //     }
+  //   });
+  // }
 
 
 }

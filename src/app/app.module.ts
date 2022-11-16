@@ -25,6 +25,7 @@ import { VideoplayerComponent } from './Components/videoplayer/videoplayer.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaqComponent } from './Components/home/faq/faq.component';
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
@@ -34,6 +35,7 @@ import { HeaderComponent } from './Components/header/header.component';
 import { MovieListComponent } from './Components/movie-list/movie-list.component';
 import { SingleMovieComponent } from './Components/single-movie/single-movie.component';
 import { PlayListComponent } from './Components/play-list/play-list.component';
+import { TvshowComponent } from './Components/tvshow/tvshow.component';
 
 @NgModule({
   declarations: [
@@ -54,10 +56,12 @@ import { PlayListComponent } from './Components/play-list/play-list.component';
     HeaderComponent,
     MovieListComponent,
     SingleMovieComponent,
-    PlayListComponent
+    PlayListComponent,
+    TvshowComponent
   ],
   imports: [
     BrowserModule,
+    YouTubePlayerModule,
     AppRoutingModule,
     MatFormFieldModule,
     SlickCarouselModule,

@@ -23,6 +23,10 @@ export class HeaderComponent implements OnInit {
   onSearch() {
     this.route.navigate(['movieSearchList'])
   }
+
+  onTvshow() {
+    this.route.navigate(['tvshow'])
+  }
   onHome() {
     this.route.navigate(['mainpage'])
   }

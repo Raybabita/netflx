@@ -10,7 +10,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     height: 100%;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.4);
@@ -43,7 +43,6 @@ img {
     top: 50%;
     right: 0;
     cursor: pointer;
-
     transform: translate(-69%, -50%);
     border: none;
     color: #fff;
@@ -136,7 +135,7 @@ img {
     }
 
     .section1Header1 {
-        font-size: 24px;
+        font-size: 15px;
         line-height: 1;
         min-width: 400px;
 

@@ -1,5 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MovieserviceService } from 'src/app/Services/movieservice.service';
+import { RouterTestingModule } from "@angular/router/testing";
 import { SingleMovieComponent } from './single-movie.component';
 
 describe('SingleMovieComponent', () => {
@@ -8,9 +10,11 @@ describe('SingleMovieComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SingleMovieComponent ]
+      declarations: [SingleMovieComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      providers: [MovieserviceService],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SingleMovieComponent);
     component = fixture.componentInstance;

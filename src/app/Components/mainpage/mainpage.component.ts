@@ -37,7 +37,7 @@ export class MainpageComponent implements OnInit, OnDestroy {
     return this.headerBGUrl;
   }
   ngOnInit(): void {
-    this.subs.push(this.movie.getTrending().subscribe(data => {
+    this.subs.push(this.movie.getTrendingMovies().subscribe(data => {
       this.trending = data;
       this.headerBGUrl = 'https://image.tmdb.org/t/p/original' + data?.results?.[1].backdrop_path;
       console.log(this.headerBGUrl)
@@ -45,10 +45,10 @@ export class MainpageComponent implements OnInit, OnDestroy {
       console.log(this.title)
     }
     ));
-    this.subs.push(this.movie.getPopularMovies().subscribe(data => this.popular = data));
-    this.subs.push(this.movie.getTopRated().subscribe(data => this.topRated = data));
-    this.subs.push(this.movie.getOriginals().subscribe(data => this.originals = data));
-    this.subs.push(this.movie.getNowPlaying().subscribe(data => this.nowPlaying = data));
+    this.subs.push(this.movie.getPopularsMovies().subscribe(data => this.popular = data));
+    this.subs.push(this.movie.getTopRatedMovies().subscribe(data => this.topRated = data));
+    this.subs.push(this.movie.getOriginalShows().subscribe(data => this.originals = data));
+    this.subs.push(this.movie.getNowPlayingMovies().subscribe(data => this.nowPlaying = data));
     this.getUrl()
   }
 

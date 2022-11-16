@@ -11,6 +11,7 @@ import { HeaderComponent } from './Components/header/header.component';
 import { MovieListComponent } from './Components/movie-list/movie-list.component';
 import { SingleMovieComponent } from './Components/single-movie/single-movie.component';
 import { PlayListComponent } from './Components/play-list/play-list.component';
+import { TvshowComponent } from './Components/tvshow/tvshow.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,11 @@ const routes: Routes = [
     path: 'singleMovie/myPlaylist',
     component: PlayListComponent,
     // canActivate: [UserloginGuard]
+  },
+  {
+    path: 'tvshow',
+    component: TvshowComponent,
+    // canActivate: [UserloginGuard]
   }
 
 
@@ -57,6 +63,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  // providers: [UserloginGuard]
+  providers: [UserloginGuard]
 })
 export class AppRoutingModule { }

@@ -5,6 +5,7 @@ export interface Movies {
     dates: Dates;
     total_pages: number;
     backdrops: any;
+    videos: any;
 }
 export interface ResultsEntity {
     name: string;
@@ -22,6 +23,8 @@ export interface ResultsEntity {
     vote_average: number;
     overview: string;
     release_date: string;
+
+
 }
 export interface Dates {
     maximum: string;

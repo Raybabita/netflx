@@ -1,6 +1,6 @@
 .playListContainer {
     background-color: #1d1d1d;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 h2 {
@@ -83,6 +83,7 @@ img {
 }
 
 h1,
+
 h5,
 p {
     color: #fff;

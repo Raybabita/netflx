@@ -8,6 +8,7 @@ import { MyplaylistService } from 'src/app/Services/myplaylist.service';
 })
 export class PlayListComponent implements OnInit {
   movie: any = [];
+  watchlistImg = "https://res.cloudinary.com/dahw90b2z/image/upload/v1668573781/watchlist_un4ahp.png";
 
 
   constructor(private playListService: MyplaylistService) { }
