@@ -1,16 +1,69 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 .bgcontainer {
+    min-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    background-color: gray;
+    /* background-color: gray; */
     color: white;
 
 }
 
-/* .desc {
-    padding-top: 400px;
-    padding-left: 50px;
+#exampleModal {
+    /* background-color: blue; */
+    box-shadow: 120px 100px 250px #000000, inset -120px -100px 250px #000000;
+}
+
+.closebtn {
+    background-color: transparent;
+    height: 30px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.closebtn span {
+    font-size: 30px;
+}
+
+.modal-header {
+
+    display: flex;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.modal-dialog {
+    display: flex;
+    width: 100%;
+    min-width: 900px;
+}
+
+.modal-content {
+    display: flex;
+    background-color: transparent;
+}
+
+.desc {
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    margin-top: 90px;
+
+}
+
+/* .watchTrailer {
+    margin-top: 200px;
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
 } */
 
 img {
@@ -22,8 +75,15 @@ img {
     z-index: -1;
 }
 
-.btnContaienr {
+.btnContainer {
+    width: 100%;
+    /* background-color: red; */
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+}
 
+.playContainer {
     display: flex;
 }
 
@@ -58,6 +118,18 @@ img {
     cursor: pointer;
     border-radius: 5px;
     font-size: 15px;
+}
+
+.watchTrailer {
+    background-color: transparent;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Sono', sans-serif;
+    font-weight: bold;
+}
+
+.watchTrailer:hover {
+    background-color: red;
 }
 
 .movieTitle {

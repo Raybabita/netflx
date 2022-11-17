@@ -24,8 +24,8 @@ export class SingleMovieComponent implements OnInit {
   apiLoaded = false;
 
   // videoId = 'QIZ9aZD6vs0';
-  height = 800;
-  width = 1550;
+  height = 500;
+  width = 840;
   startSeconds = 60;
   endSeconds = 120;
 
@@ -71,7 +71,6 @@ export class SingleMovieComponent implements OnInit {
   }
 
 
-
   playVideo() {
     this.route.navigate(['video'])
   }
@@ -79,19 +78,12 @@ export class SingleMovieComponent implements OnInit {
     this.playListService.addtocart(data);
   }
 
+  displayStyle = "none";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
 }

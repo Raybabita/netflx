@@ -22,6 +22,7 @@
     "@angular/router": "^14.2.0",
     "@angular/youtube-player": "^14.2.7",
     "@videogular/ngx-videogular": "^6.0.0",
+    "bootstrap": "^5.2.2",
     "ngx-slick-carousel": "^0.6.0",
     "rxjs": "~7.5.0",
     "slick-carousel": "^1.8.1",

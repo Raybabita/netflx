@@ -36,9 +36,12 @@ import { MovieListComponent } from './Components/movie-list/movie-list.component
 import { SingleMovieComponent } from './Components/single-movie/single-movie.component';
 import { PlayListComponent } from './Components/play-list/play-list.component';
 import { TvshowComponent } from './Components/tvshow/tvshow.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
+
     AppComponent,
     HomeComponent,
     Section1Component,
@@ -57,7 +60,9 @@ import { TvshowComponent } from './Components/tvshow/tvshow.component';
     MovieListComponent,
     SingleMovieComponent,
     PlayListComponent,
-    TvshowComponent
+    TvshowComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -74,6 +79,7 @@ import { TvshowComponent } from './Components/tvshow/tvshow.component';
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
+    MatDialogModule,
     VgBufferingModule,
     MatSidenavModule,
     FormsModule, ReactiveFormsModule
