@@ -6,8 +6,7 @@
         <ul class="listItemLeft">
             <li><a class="activeClass" (click)="onHome()">Home</a></li>
             <li><a (click)="onTvshow()">TV Shows</a></li>
-            <li><a>Movies</a></li>
-            <li><a>Latest</a></li>
+            <li><a (click)="onMovies()">Movies</a></li>
             <li><a (click)="onMyList()">My WatchList <span class="totalItem">{{totalItem}}</span></a></li>
         </ul>
     </div>
@@ -18,16 +17,23 @@
                     <mat-icon>search</mat-icon>
                 </a>
             </li>
-            <li><a (click)="logout()">LOGOUT</a></li>
-            <li><a href="#">
-                    <mat-icon>card_giftcard</mat-icon>
-                </a></li>
-            <li><a href="#">
+            <!-- <li><a (click)="logout()">LOGOUT</a></li> -->
+            <li><a>
                     <mat-icon>notifications</mat-icon>
-                </a></li>
+                </a>
+
+            </li>
             <li>
-                <img class="avatar-img"
-                    src="https://res.cloudinary.com/dahw90b2z/image/upload/v1662123458/photo-1483985988355-763728e1935b_q9k0ne.avif" />
+                <a>
+                    <img class="profileimg" src="https://github.com/mdo.png" />
+                </a>
+                <ul class="dropdown">
+                    <li><a>view profile</a></li>
+                    <li><a>Edit profile</a></li>
+                    <li><a>change password</a></li>
+                    <li><a (click)="logout()">logout</a></li>
+                </ul>
+
             </li>
         </ul>
     </div>
@@ -41,7 +47,7 @@
             <ul class="mobileMenu">
                 <li class="nav-link-s1">Profile</li>
                 <li class="nav-link-s1">Setttings</li>
-                <li class="nav-link-s1">Gitf</li>
+
                 <li class="nav-link-s1">Notifications</li>
                 <li class="nav-link-s1" (click)="logout()">Logout</li>
             </ul>

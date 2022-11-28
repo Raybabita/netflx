@@ -16,18 +16,25 @@ import { FullscreenOverlayContainer } from '@angular/cdk/overlay';
 export class SingleMovieComponent implements OnInit {
   id: any;
   data: any;
+  similarMovie: any;
+  recommendMovie: any;
   headerBGUrl!: any;
   video: any;
   safeURL: SafeResourceUrl;
   key: any;
   videoURL: any;
   apiLoaded = false;
-
-  // videoId = 'QIZ9aZD6vs0';
   height = 500;
   width = 840;
   startSeconds = 60;
   endSeconds = 120;
+
+  sliderConfig = {
+    slidesToShow: 6,
+    slidesToScroll: 2,
+    arrows: true,
+    autoplay: false
+  }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -40,6 +47,8 @@ export class SingleMovieComponent implements OnInit {
       document.body.appendChild(tag);
       this.apiLoaded = true;
     }
+    this.getSimilarMovies()
+    this.getRecommend()
   }
 
 
@@ -54,6 +63,19 @@ export class SingleMovieComponent implements OnInit {
     })
   }
 
+  getSimilarMovies() {
+    this.movieService.getSimilarMovie(this.id).subscribe(item => {
+      this.similarMovie = item;
+      console.log("from similar movie", this.similarMovie)
+    })
+  }
+
+  getRecommend() {
+    this.movieService.getRecommendMovie(this.id).subscribe(item => {
+      this.recommendMovie = item;
+      console.log("from recommend movie", this.recommendMovie)
+    })
+  }
 
   image: any;
   constructor(private activatedRoute: ActivatedRoute, private movieService: MovieserviceService, private _sanitizer: DomSanitizer,
@@ -75,7 +97,7 @@ export class SingleMovieComponent implements OnInit {
     this.route.navigate(['video'])
   }
   onAddPlayList(data: any) {
-    this.playListService.addtocart(data);
+    this.playListService.addtoList(data);
   }
 
   displayStyle = "none";

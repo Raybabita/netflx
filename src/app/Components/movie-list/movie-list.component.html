@@ -1,11 +1,11 @@
 <app-header></app-header>
-
-
 <!-- Top Rated Movei -->
 <div class="bgContainer">
     <app-search (searchTextChange)="onSearchTextEntered($event)"></app-search>
     <div class="container">
-        <h1>Top Rated Moveis</h1>
+        <h1 class="headerContainer">
+            <h1>Top Rated Moveis</h1>
+        </h1>
         <div class=" list">
             <div class="card" *ngFor="let pm of topRatedMovies?.results; let i =index">
                 <div *ngIf="searchText ===''|| pm.title.toLowerCase().includes(searchText)">
@@ -26,7 +26,10 @@
 
     <!-- Popular Movie -->
     <div class="container">
-        <h1>Popular Moveis</h1>
+        <div class="headerContainer">
+            <h1>Popular Moveis</h1>
+        </div>
+
         <div class="list">
             <div class="card" *ngFor="let m of popularMovies?.results; let i =index">
                 <div *ngIf="searchText ===''|| m.title.toLowerCase().includes(searchText)">
@@ -45,7 +48,10 @@
 
     <!-- Trending Movies -->
     <div class="container">
-        <h1>Trending Moveis</h1>
+        <div class="headerContainer">
+            <h1>Trending Moveis</h1>
+        </div>
+
         <div class="list">
             <div class="card" *ngFor="let pm of trendingMovies?.results; let i =index">
                 <div *ngIf="searchText ===''|| pm.title.toLowerCase().includes(searchText)">
@@ -63,7 +69,11 @@
     </div>
     <!-- upcoming movies -->
     <div class="container">
-        <h1>UpComing Moveis</h1>
+        <div class="headerContainer">
+            <h1>UpComing Moveis</h1>
+        </div>
+
+
         <div class="list">
             <div class="card" *ngFor="let pm of upComingMovies?.results; let i =index">
                 <div *ngIf="searchText ===''|| pm.title.toLowerCase().includes(searchText)">
@@ -81,7 +91,10 @@
     </div>
     <!-- now playing movies -->
     <div class="container">
-        <h1>Now Playing Moveis</h1>
+        <div class="headerContainer">
+            <h1>Now Playing Moveis</h1>
+        </div>
+
         <div class="list">
             <div class="card" *ngFor="let pm of nowPlayingMovies?.results; let i =index">
                 <div *ngIf="searchText ===''|| pm.title.toLowerCase().includes(searchText)">
@@ -99,7 +112,11 @@
     </div>
     <!-- Originals -->
     <div class="container">
-        <h1>Originals Moveis</h1>
+        <div class="headerContainer">
+            <h1>Originals Moveis</h1>
+        </div>
+
+
         <div class="list">
             <div class="card" *ngFor="let pm of originals?.results; let i =index">
                 <div *ngIf="searchText ===''|| pm.title.toLowerCase().includes(searchText)">

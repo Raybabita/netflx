@@ -3,62 +3,62 @@ import { EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Movies, login, SignUp } from '../Model/movies';
+import { Movies } from '../Model/movies';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
-const enum endpoint {
-  latest = '/movie/latest',
-  now_playing = '/movie/now_playing',
-  popular = '/movie/popular',
-  top_rated = '/movie/top_rated',
-  upcoming = '/movie/upcoming',
-  trending = '/trending/all/week',
-  originals = '/discover/tv',
-  singleMovie = '/movie/{movie_id}'
-}
+// const enum endpoint {
+//   latest = '/movie/latest',
+//   now_playing = '/movie/now_playing',
+//   popular = '/movie/popular',
+//   top_rated = '/movie/top_rated',
+//   upcoming = '/movie/upcoming',
+//   trending = '/trending/all/week',
+//   originals = '/discover/tv',
+//   singleMovie = '/movie/{movie_id}'
+// }
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieserviceService {
-  isUserLoggedIn = new BehaviorSubject<boolean>(false)
+
   LoginErrorMsg = new EventEmitter<boolean>(false)
 
   constructor(private http: HttpClient, private router: Router) { }
-  userSignUp(data: SignUp) {
-    this.http.post('http://localhost:3000/users',
-      data,
-      { observe: 'response' }).subscribe((result) => {
-        this.isUserLoggedIn.next(true);
-        localStorage.setItem('userDatails', JSON.stringify(result.body));
-        // this.router.navigate(['login'])
-        console.log(result);
-      })
-  }
+  // userSignUp(data: SignUp) {
+  //   this.http.post('http://localhost:3000/users',
+  //     data,
+  //     { observe: 'response' }).subscribe((result) => {
+  //       this.isUserLoggedIn.next(true);
+  //       localStorage.setItem('userDatails', JSON.stringify(result.body));
+  //       // this.router.navigate(['login'])
+  //       console.log(result);
+  //     })
+  // }
 
-  reloadUser() {
-    if (localStorage.getItem('userDatails')) {
-      this.isUserLoggedIn.next(true);
-      this.router.navigate(['login'])
-    }
-  }
+  // reloadUser() {
+  //   if (localStorage.getItem('userDatails')) {
+  //     this.isUserLoggedIn.next(true);
+  //     this.router.navigate(['login'])
+  //   }
+  // }
 
-  userLogin(data: login) {
-    console.log(data)
-    this.http.get(`http://localhost:3000/users?email=${data.email}&password=${data.password}`,
-      { observe: 'response' }).subscribe((result: any) => {
-        console.log(result);
-        if (result && result.body && result.body.length) {
-          this.LoginErrorMsg.emit(false)
-          localStorage.setItem('userDatails', JSON.stringify(result.body))
-          this.router.navigate(['mainpage'])
-        } else {
-          console.log("login failed");
-          this.LoginErrorMsg.emit(true)
-        }
-      })
-  }
+  // userLogin(data: login) {
+  //   console.log(data)
+  //   this.http.get(`http://localhost:3000/users?email=${data.email}&password=${data.password}`,
+  //     { observe: 'response' }).subscribe((result: any) => {
+  //       console.log(result);
+  //       if (result && result.body && result.body.length) {
+  //         this.LoginErrorMsg.emit(false)
+  //         localStorage.setItem('userDatails', JSON.stringify(result.body))
+  //         this.router.navigate(['mainpage'])
+  //       } else {
+  //         console.log("login failed");
+  //         this.LoginErrorMsg.emit(true)
+  //       }
+  //     })
+  // }
 
   url: string = 'https://api.themoviedb.org/3';
 
@@ -104,7 +104,17 @@ export class MovieserviceService {
 
   }
 
+  getSimilarMovie(id: any): Observable<Movies> {
+    // alert(id);
+    return this.http.get<Movies>(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=285bb9715cde096a3fbb2cfdac23701f&append_to_response=videos,images`);
 
+  }
+
+  getRecommendMovie(id: any): Observable<Movies> {
+    // alert(id);
+    return this.http.get<Movies>(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=285bb9715cde096a3fbb2cfdac23701f&append_to_response=videos,images`);
+
+  }
 
   // private URL: string = 'https://api.themoviedb.org/3';
 
