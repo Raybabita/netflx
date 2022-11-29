@@ -17,6 +17,7 @@ import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { TvepisodeComponent } from './Components/tvepisode/tvepisode.component';
 import { UpdateprofileComponent } from './Components/updateprofile/updateprofile.component';
+import { AuthGuard } from './authGuard/auth.guard';
 
 
 const routes: Routes = [
@@ -34,7 +35,7 @@ const routes: Routes = [
   {
     path: 'mainpage',
     component: MainpageComponent,
-    // canActivate: [UserloginGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'video',
@@ -79,22 +80,26 @@ const routes: Routes = [
   {
     path: 'discovermovie/singleMovie/:id',
     component: SingleMovieComponent,
-    // canActivate: [UserloginGuard]
+
   }, {
     path: 'profile',
     component: ProfileComponent,
-    // canActivate: [UserloginGuard]
-  }, {
-    path: 'tvshow/singleTv/:id/season/:id/episode/:id',
 
+  },
+  {
+    path: 'mainpage/profile',
+    component: ProfileComponent,
+
+  },
+  {
+    path: 'tvshow/singleTv/:id/season/:id/episode/:id',
     component: TvepisodeComponent,
-    // canActivate: [UserloginGuard]
     // /season/{{m.season_number}}/episode/{{m.episode_number}}
   },
   {
     path: 'profile/update/:id',
     component: UpdateprofileComponent,
-    // canActivate: [UserloginGuard]
+
     // /season/{{m.season_number}}/episode/{{m.episode_number}}
   },
 ];

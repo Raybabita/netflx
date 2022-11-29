@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, Subject, tap } from 'rxjs';
+import { __values } from 'tslib';
 import { AuthSignupLoginResponse } from '../Model/auth-response';
 import { Users } from '../Model/user';
 
@@ -9,9 +10,11 @@ import { Users } from '../Model/user';
 })
 export class AuthService {
 
-  user = new Subject<Users>();
+  user = new BehaviorSubject<Users>(null!);
   // private data!: SignUp;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
 
   // signup(data: any): Observable<any> {
   //   return this.http.post('http://localhost:5000/auth/signup', data);
@@ -93,11 +96,63 @@ export class AuthService {
     )
   }
 
+  autosignIn() {
+    const userData = localStorage.getItem("userDetails") //user data get from local storage as string
+    console.log("data feached form local storage", userData)
+    const currentUser = JSON.parse(localStorage.getItem('userDetails') || '{}'); //user data get from local storage and covert to object
+    console.log("current user", currentUser)
+    if (!currentUser) {
+      return;
+    }
+    const loggedInUser = new Users(currentUser.email, currentUser.id, currentUser._token, new Date(currentUser._tokenExpirationDate))
+    if (loggedInUser.token) {
+      this.user.next(loggedInUser);
+      this.getUserProfile(loggedInUser.token)
+    }
+
+  }
+
+
+  signOut() {
+    localStorage.removeItem("userDetails");
+  }
+
   private authenticationUser(email: any, userId: any, token: any, expiresIn: any) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new Users(email, userId, token, expirationDate);
-    this.user.next(user);
-    console.log("userData", user);
+    this.user.next(user);//stroring data in subject
+    console.log(" fetch user Details", user);
+    localStorage.setItem("userDetails", JSON.stringify(user));
+
   }
 
+
+  updateProfile(data: any) {
+    return this.http.post<any>('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAIG2cbbRo1SxZpqvpSXJ1DOhhHd_5gbxw',
+      {
+        idToken: data.token,
+        displayName: data.name,
+        photoUrl: data.profilepicUrl,
+        returnSecureToken: true
+      }
+    )
+  }
+
+  getUserProfile(token: any): Observable<any> {
+    return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyAIG2cbbRo1SxZpqvpSXJ1DOhhHd_5gbxw', {
+      idToken: token
+    })
+  }
+
+
+
+  setter(data: any) {
+    console.log("from setter", data)
+    this.user = data;
+  }
+
+  getter() {
+    console.log("from getter", this.user)
+    return this.user;
+  }
 }

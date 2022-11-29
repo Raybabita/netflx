@@ -18,18 +18,19 @@
                 </a>
             </li>
             <!-- <li><a (click)="logout()">LOGOUT</a></li> -->
-            <li><a>
+            <!-- <li><a>
                     <mat-icon>notifications</mat-icon>
                 </a>
 
-            </li>
+            </li> -->
             <li>
                 <a>
-                    <img class="profileimg" src="https://github.com/mdo.png" />
+                    <img class="profileimg" src="{{userData.photoUrl? userData.photoUrl:
+                        'https://github.com/mdo.png'}}" />
                 </a>
                 <ul class="dropdown">
-                    <li><a>view profile</a></li>
-                    <li><a>Edit profile</a></li>
+                    <li><a routerLink="/profile">view profile</a></li>
+                    <li><a routerLink="/profile" [queryParams]="{EditMode:true}">Edit profile</a></li>
                     <li><a>change password</a></li>
                     <li><a (click)="logout()">logout</a></li>
                 </ul>

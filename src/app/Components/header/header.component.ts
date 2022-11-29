@@ -13,8 +13,11 @@ export class HeaderComponent implements OnInit {
   isshowMenu = false;
   sticky = false;
   data!: any;
+  userData !: any;
+  token = JSON.parse(localStorage.getItem('userDetails') || '{}')._token;
   constructor(private route: Router, private playlistService: MyplaylistService, private auth: AuthService,) {
     this.myUrlVariable = 'https://res.cloudinary.com/dahw90b2z/image/upload/v1668097628/im_jvwl1k.webp';
+    this.getdata()
   }
 
   ngOnInit(): void {
@@ -22,6 +25,17 @@ export class HeaderComponent implements OnInit {
       this.totalItem = res.length;
     })
 
+    this.getdata()
+
+
+  }
+
+  getdata() {
+    this.auth.getUserProfile(this.token).subscribe(res => {
+      console.log("header", res)
+      this.userData = res.users?.[0];
+      console.log(this.userData?.photoUrl)
+    })
   }
   onSearch() {
     this.route.navigate(['movieSearchList'])
@@ -49,9 +63,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem("token")
+    this.auth.signOut()
     this.route.navigate(['/login'])
   }
+
 
   onMyList() {
     this.route.navigate(['singleMovie/myPlaylist'])

@@ -1,39 +1,272 @@
-.container {
-    padding-top: 200px;
-    background-color: #1d1d1d;
-    color: white;
+.bgContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
+    align-items: center;
     min-height: 100vh;
+    min-width: 100vw;
+    background-color: #fff;
+    /* box-shadow: 120px 100px 250px #000000, inset -120px -100px 250px #000000; */
+
 }
 
-.profileContainers {
-    padding: 40px;
+.profiletitle {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.btn1 {
+    background-color: #1cad39 !important;
+
+}
+
+.trueMode {
+    padding: 4px 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    background-color: #1cad39;
+}
+
+.falseMode {
+    padding: 4px 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    background-color: red;
+}
+
+.btn {
+    font-size: 14px;
+    outline: none;
+    height: 40px;
+    width: 90px;
+    text-align: center;
+    background-color: #3b82f6;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* .inputContainer {
+    justify-content: flex-start;
+    display: flex;
+    padding: 10px;
+} */
+
+.value {
+    font-weight: 500;
+    line-height: 1;
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-left: 10px;
+}
+
+.horizontal {
+    width: 100%;
+    border: 0.1 solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.formContainer {
+    display: flex;
+    box-shadow: 0px 4px 8px 0px;
     border-radius: 8px;
-    background-color: gray;
+    flex-direction: column;
+    /* align-items: center; */
+    background-color: #fff;
+    padding-top: 30px;
+    width: 35%;
+    max-width: 400px;
+    min-width: 350px;
+}
+
+.pp {
+    height: 30px;
+}
+
+.logo {
+    padding: 30px;
+    height: 40px;
+}
+
+.auth-toggle-link {
+    text-decoration: underline;
+    color: blue;
+    margin-top: 20px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.account-desc-text {
+    padding: 20px;
+    color: rgb(15, 13, 13);
+}
+
+.loginForm {
+    width: 350px;
+    max-width: 550xp;
+    min-width: 350px;
+    /* background-color: rgba(0, 0, 0, .75); */
+    border-radius: 4px;
+    display: flex;
+    padding: 10px;
     justify-content: center;
-    align-items: flex-start;
+    /* align-items: center; */
     flex-direction: column;
 }
 
-.logoutBtn {
-    height: 40px;
-    margin-left: 5px;
-    padding: 10px;
-    background-color: aliceblue;
-    font-size: 20px;
-    border: none;
-    outline: none;
-    color: #008CBA;
-    cursor: pointer;
-    font-weight: 100;
-    border-radius: 4px;
+.signInHeading {
+    color: #fff;
+    font-family: "Roboto";
+
 }
 
-.horizontalLine {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 0.5px solid black;
-    min-width: 100%;
+.inputText {
+    display: flex;
+    min-width: 300px;
+    background-color: rgb(249, 240, 240);
+    height: 50px;
+    color: rgb(14, 12, 12);
+    margin-top: 20px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.error-msg {
+    color: red;
+    font-size: 14px;
+    margin: 10px;
+}
+
+.inputField {
+    height: 40px;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+    width: 300px;
+    border-bottom: 1px solid gray;
+}
+
+.signInBtn {
+    margin-top: 20px;
+    background-color: #e50914;
+    height: 50px;
+    min-width: 310px;
+}
+
+.rememberMeText {
+    padding: 20px;
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.learnMoreText {
+    color: blue
+}
+
+.text {
+    color: #8c8c8c;
+    font-size: 15px;
+    margin-top: 11px;
+}
+
+.signupLink {
+    color: #ffffffff;
+}
+
+.footer {
+    background-color: rgba(0, 0, 0, .75);
+    border-radius: 4px;
+    display: flex;
+    padding: 60px;
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footerSection {
+    border-top: 10px rgb(69, 69, 69) solid;
+    padding: 50px;
+}
+
+.listItem {
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    text-decoration: none;
+}
+
+.link {
+    color: #999999;
+    font-size: 12px;
+    text-decoration: none;
+
+}
+
+.call-text {
+    margin-bottom: 1.5rem;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+
+.footer .footer-cols {
+    display: grid;
+    width: 60%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+
+}
+
+.footer li {
+    line-height: 2.4;
+}
+
+.companyNameText {
+    padding-top: 20px;
+
+}
+
+.call-text {
+    color: #999999;
+    align-self: flex-start;
+    margin-left: 290px;
+}
+
+@media screen and (max-width: 568px) {
+    .loginForm {
+        margin-left: 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .loginForm {
+        margin-left: 130px;
+    }
+
+    .inputText {
+        min-width: 200px;
+    }
+
+    .signInBtn {
+        min-width: 200px;
+    }
 }

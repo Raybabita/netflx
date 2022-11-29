@@ -1,5 +1,48 @@
 <app-header></app-header>
-<div class="container">
+<div class="bgContainer">
+    <div class="formContainer">
+        <div class="profiletitle">
+            <h1>Profile</h1> <button class="btn btn1" routerLink="/profile" [queryParams]="{EditMode:true}"
+                (click)="onEdit()">Edit</button>
+        </div>
+        <hr class="horizontal">
 
+        <form [formGroup]="userform" class="loginForm" (ngSubmit)="onSubmit()">
+            <p>Edit Mode:
+                <span [ngClass]="{trueMode:editMode, falseMode:!editMode}"> {{editMode}}</span>
+            </p>
+            <div>
+                <label for="name">Name:</label>
+                <span *ngIf="!editMode" class="value">{{this.userData?.displayName}}</span>
+                <div *ngIf="editMode">
+                    <input type='text' formControlName="name" class="inputField" ngModel matInput
+                        placeholder="Enter Name">
+                    <p class="error-msg"
+                        *ngIf="userform.controls['name'].dirty && userform.hasError('required','name')">
+                        *Name
+                        Required</p>
+                </div>
+            </div>
+            <div>
+                <label for="profilepicUrl">Profile Picture:</label>
+                <img *ngIf="!editMode" class="pp" src="{{this.userData?.photoUrl}}" />
+                <div *ngIf="editMode">
+                    <input type='text' class="inputField" formControlName="profilepicUrl" ngModel matInput
+                        placeholder="Enter profilepicUrl">
 
+                    <p class="error-msg"
+                        *ngIf="userform.controls['profilepicUrl'].dirty && userform.hasError('required','profilepicUrl')">
+                        *profilepicUrl
+                        Required</p>
+                </div>
+            </div>
+            <div class="btnContainer" *ngIf="editMode">
+                <button class="btn" [disabled]="!userform.valid" type="submit">Save</button>
+                <button class="btn" type="button" (click)="onDiscard()">Discard</button>
+                <!-- <button [disabled]="!userform.valid" type="submit" class="signInBtn" mat-raised-button color="warn">Sign
+                    up</button> -->
+
+            </div>
+        </form>
+    </div>
 </div>
