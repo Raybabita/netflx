@@ -145,14 +145,21 @@ export class AuthService {
   }
 
 
-
-  setter(data: any) {
-    console.log("from setter", data)
-    this.user = data;
+  changePassword(data: any) {
+    return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAIG2cbbRo1SxZpqvpSXJ1DOhhHd_5gbxw', {
+      idToken: data.idToken,
+      password: data.newpassword,
+      returnSecureToken: true
+    })
   }
 
-  getter() {
-    console.log("from getter", this.user)
-    return this.user;
+
+  forgotpassoword(data: any) {
+    return this.http.post<any>('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyAIG2cbbRo1SxZpqvpSXJ1DOhhHd_5gbxw', {
+      requestType: 'PASSWORD_RESET',
+      email: data.email
+    })
   }
+
+
 }

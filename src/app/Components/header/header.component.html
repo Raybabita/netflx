@@ -26,12 +26,12 @@
             <li>
                 <a>
                     <img class="profileimg" src="{{userData.photoUrl? userData.photoUrl:
-                        'https://github.com/mdo.png'}}" />
+                        'https://res.cloudinary.com/dahw90b2z/image/upload/v1669801039/pp_cfygeo.jpg'}}" />
                 </a>
                 <ul class="dropdown">
                     <li><a routerLink="/profile">view profile</a></li>
                     <li><a routerLink="/profile" [queryParams]="{EditMode:true}">Edit profile</a></li>
-                    <li><a>change password</a></li>
+                    <li><a routerLink="/changepassword">change password</a></li>
                     <li><a (click)="logout()">logout</a></li>
                 </ul>
 

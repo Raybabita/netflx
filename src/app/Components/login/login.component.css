@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     min-height: 100vh;
     min-width: 100vw;
     box-shadow: 120px 100px 250px #000000, inset -120px -100px 250px #000000;
@@ -28,7 +29,7 @@
 }
 
 .account-desc-text {
-    padding: 20px;
+    padding: 5px;
     color: rgb(15, 13, 13);
 }
 
@@ -36,6 +37,7 @@
     width: 350px;
     max-width: 550xp;
     min-width: 350px;
+
     /* background-color: rgba(0, 0, 0, .75); */
     border-radius: 4px;
     display: flex;
@@ -46,7 +48,7 @@
 }
 
 .signInHeading {
-    color: #fff;
+    color: #000;
     font-family: "Roboto";
 
 }
@@ -78,10 +80,35 @@
 }
 
 .signInBtn {
-    margin-top: 20px;
+    /* margin-top: 10px; */
     background-color: #e50914;
     height: 50px;
+    cursor: pointer;
     min-width: 310px;
+}
+
+.ggsignInBtn {
+    /* margin-top: 10px; */
+    display: flex;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    height: 50px;
+    text-align: center;
+    min-width: 310px;
+}
+
+.gglogo {
+    height: 30px;
+    border-radius: 50%;
+}
+
+.orTxt {
+    padding: 10px;
+    text-align: center;
 }
 
 .rememberMeText {

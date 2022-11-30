@@ -8,7 +8,7 @@
 
         <form [formGroup]="loginForm" class="loginForm" (ngSubmit)="onSubmit()">
             <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
-                <strong>{{errorMsg}}</strong>
+                <strong>Error: {{errorMsg}}</strong>
             </div>
             <div>
                 <input type='text' class="inputField" formControlName="email" ngModel matInput
@@ -29,6 +29,9 @@
                 <button class="signInBtn" type="submit" [disabled]="!loginForm.valid" mat-raised-button
                     color="warn">Sign
                     In</button>
+
+                <p class="account-desc-text"> <a class="auth-toggle-link" (click)="onforgotPassword()">
+                        Forgot Password?</a></p>
                 <p class="account-desc-text">Don't have an account? <a class="auth-toggle-link" (click)="onSignup()">
                         Sign up</a></p>
             </div>

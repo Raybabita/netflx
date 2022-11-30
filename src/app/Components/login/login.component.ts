@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['signup'])
   }
 
-
+  onforgotPassword() {
+    this.router.navigate(['forgotpassword'])
+  }
   // login() {
   //   const data = this.loginForm.value;
   //   console.log(data)

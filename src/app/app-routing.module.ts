@@ -18,6 +18,8 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { TvepisodeComponent } from './Components/tvepisode/tvepisode.component';
 import { UpdateprofileComponent } from './Components/updateprofile/updateprofile.component';
 import { AuthGuard } from './authGuard/auth.guard';
+import { ChangepasswordComponent } from './Components/changepassword/changepassword.component';
+import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
 
 
 const routes: Routes = [
@@ -40,67 +42,80 @@ const routes: Routes = [
   {
     path: 'video',
     component: VideoplayerComponent,
-    // canActivate: [UserloginGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'mainpage/video',
     component: VideoplayerComponent,
-    // canActivate: [UserloginGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'movieSearchList',
     component: MovieListComponent,
-    // canActivate: [UserloginGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'mainpage/singleMovie/:id',
     component: SingleMovieComponent,
-    // canActivate: [UserloginGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'singleMovie/myPlaylist',
     component: PlayListComponent,
-    // canActivate: [UserloginGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'tvshow',
     component: TvshowComponent,
-    // canActivate: [UserloginGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'discovermovie',
     component: DiscovermovieComponent,
-    // canActivate: [UserloginGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'tvshow/singleTv/:id',
     component: SingletvComponent,
-    // canActivate: [UserloginGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'discovermovie/singleMovie/:id',
     component: SingleMovieComponent,
-
+    canActivate: [AuthGuard]
   }, {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
 
   },
   {
     path: 'mainpage/profile',
     component: ProfileComponent,
-
+    canActivate: [AuthGuard]
   },
   {
     path: 'tvshow/singleTv/:id/season/:id/episode/:id',
     component: TvepisodeComponent,
-    // /season/{{m.season_number}}/episode/{{m.episode_number}}
+    canActivate: [AuthGuard]
   },
   {
-    path: 'profile/update/:id',
-    component: UpdateprofileComponent,
+    path: 'changepassword',
+    component: ChangepasswordComponent,
+    canActivate: [AuthGuard]
 
-    // /season/{{m.season_number}}/episode/{{m.episode_number}}
+  },
+  {
+    path: 'mainpage/changepassword',
+    component: ChangepasswordComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'forgotpassword',
+    component: ForgotpasswordComponent,
+    // canActivate: [AuthGuard]
+
   },
 ];
 

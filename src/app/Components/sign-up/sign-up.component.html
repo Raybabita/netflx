@@ -8,7 +8,7 @@
 
         <form [formGroup]="signUpForm" class="loginForm" (ngSubmit)="onSubmit()">
             <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
-                <strong>{{errorMsg}}</strong>
+                <strong>Error: {{errorMsg}}</strong>
             </div>
             <div>
                 <input type='text' formControlName="name" class="inputField" ngModel matInput placeholder="Enter Name">
