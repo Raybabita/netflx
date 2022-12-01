@@ -22,23 +22,27 @@ export class ChangepasswordComponent implements OnInit {
       'newpassword': ['', Validators.required],
     })
   }
+
   onSubmit() {
-    console.log(this.userform.value);
-    const updateData = { idToken: this.token, ...this.userform.value };
-    console.log(updateData)
-    this.auth.changePassword(updateData).subscribe(res => {
-      console.log(res)
-      this.success = true;
-    }, err => {
-      this.errorMsg = err.error.error.message;
-      console.log(err)
-    })
+
   }
-  onpasswordChange() {
-    this.auth.signOut()
-    this.route.navigate(['/login'])
-  }
-  onDiscard() {
-    this.userform.reset()
-  }
+  // onSubmit() {
+  //   console.log(this.userform.value);
+  //   const updateData = { idToken: this.token, ...this.userform.value };
+  //   console.log(updateData)
+  //   this.auth.changePassword(updateData).subscribe(res => {
+  //     console.log(res)
+  //     this.success = true;
+  //   }, err => {
+  //     this.errorMsg = err.error.error.message;
+  //     console.log(err)
+  //   })
+  // }
+  // onpasswordChange() {
+  //   this.auth.signOut()
+  //   this.route.navigate(['/login'])
+  // }
+  // onDiscard() {
+  //   this.userform.reset()
+  // }
 }

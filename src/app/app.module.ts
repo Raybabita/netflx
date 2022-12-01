@@ -45,6 +45,7 @@ import { TvepisodeComponent } from './Components/tvepisode/tvepisode.component';
 import { UpdateprofileComponent } from './Components/updateprofile/updateprofile.component';
 import { ChangepasswordComponent } from './Components/changepassword/changepassword.component';
 import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
+import { PostsComponent } from './Components/posts/posts.component';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassw
     UpdateprofileComponent,
     ChangepasswordComponent,
     ForgotpasswordComponent,
+    PostsComponent,
 
 
   ],

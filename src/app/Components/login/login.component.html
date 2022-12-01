@@ -1,46 +1,87 @@
-<div class="loginContainer">
+<div class="loginContainer" *ngIf="user">
     <div>
         <img class="logo" alt="Netflix Logo"
             src="https://res.cloudinary.com/dahw90b2z/image/upload/v1667982530/logo_cfqupd.png" />
     </div>
-    <div class="bgContainer">
+    <div class="bgContainer" *ngIf="!isForgotPassword">
         <h1 class="signInHeading">Sign In</h1>
-
-        <form [formGroup]="loginForm" class="loginForm" (ngSubmit)="onSubmit()">
+        <div [formGroup]="loginForm" class="loginForm">
             <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
                 <strong>Error: {{errorMsg}}</strong>
             </div>
             <div>
-                <input type='text' class="inputField" formControlName="email" ngModel matInput
+                <input type='text' class="inputField" formControlName="email" [(ngModel)]="user.email"
                     placeholder="Enter Email">
-                <p class="error-msg"
+                <!-- <p class="error-msg"
                     *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">*Email
-                    Required</p>
+                    Required</p> -->
             </div>
             <div>
-                <input type='password' class="inputField" formControlName="password" ngModel matInput
-                    placeholder="Enter Password">
-                <p class="error-msg"
+                <input [type]="user.showPassword ? 'text': 'password'" class="inputField" formControlName="password"
+                    [(ngModel)]="user.password" placeholder="Enter Password">
+                <!-- <p class="error-msg"
                     *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
                     *Password
-                    Required</p>
+                    Required</p> -->
             </div>
             <div>
-                <button class="signInBtn" type="submit" [disabled]="!loginForm.valid" mat-raised-button
+                <input type="checkbox" class="inputField" [checked]="user.showPassword" formControlName="showPassword"
+                    (change)="user.showPassword = !user.showPassword"> show Password
+
+            </div>
+            <div>
+                <button class="signInBtn" type="submit" [disabled]="!loginForm.valid" (click)="loginBtnclicked()"
                     color="warn">Sign
                     In</button>
-
-                <p class="account-desc-text"> <a class="auth-toggle-link" (click)="onforgotPassword()">
-                        Forgot Password?</a></p>
-                <p class="account-desc-text">Don't have an account? <a class="auth-toggle-link" (click)="onSignup()">
-                        Sign up</a></p>
             </div>
-        </form>
+        </div>
+
+        <button class="account-desc-text"> <a class="auth-toggle-link" (click)="onforgotPassowordBtnClicked()">
+                Forgot Password?</a></button>
+        <p class="account-desc-text">Don't have an account? <a class="auth-toggle-link" (click)="onSignup()">
+                Sign up</a></p>
+
     </div>
+    <div *ngIf="!success">
+        <div class="accountrecovery" *ngIf="isForgotPassword">
+            <h1 class="text">Account Recovery</h1>
+            <p class="successText">A Verification Code Sent to {{user.email}}</p>
+            <div [formGroup]="loginForm" class="loginForm">
+                <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+                    <strong>Error: {{errorMsg}}</strong>
+                </div>
+                <div class="codeContainer">
+                    <input type="text" class="inputField" formControlName="verificationCode"
+                        [(ngModel)]="user.verificationCode" placeholder="Enter the Verification Code">
+                </div>
+                <div>
+                    <input [type]="user.showPassword ? 'text': 'password'" class="inputField"
+                        formControlName="newPassword" [(ngModel)]="newPassword" placeholder="Enter Password">
+                    <!-- <p class="error-msg"
+                    *ngIf="loginForm.controls['newPassword'].dirty && loginForm.hasError('required','newPassword')">
+                    *Password
+                    Required</p> -->
+                </div>
+                <div>
+                    <input type="checkbox" class="inputField" [checked]="user.showPassword"
+                        formControlName="showPassword" (change)="user.showPassword = !user.showPassword"> show Password
+                </div>
+                <div>
+                    <button class="signInBtn" type="submit" color="warn" (click)="newPasswordSubmit()">
+                        SUBMIT NEW PASSWORD
+                    </button>
+                </div>
 
 
+            </div>
 
+        </div>
+    </div>
+    <div *ngIf="success" class="successContainer">
+        <h1 class="successText">Password update Successfully!</h1>
+        <p class="successText">We have sent you reset password link on your email, please check!</p>
 
+    </div>
     <!-- footer section -->
     <footer class="footer">
         <p class="call-text">Questions? Call 000-800-040-1843</p>
@@ -65,4 +106,3 @@
         </div>
         <p class="companyNameText">Netflix India</p>
     </footer>
-</div>

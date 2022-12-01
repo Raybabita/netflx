@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'netflix-clone';
   constructor(private authservice: AuthService) { }
   ngOnInit(): void {
-    this.authservice.autosignIn()
+    // this.authservice.autosignIn()
   }
 
 }

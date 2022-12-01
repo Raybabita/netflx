@@ -1,49 +1,81 @@
-<div class="loginContainer">
+<div class="loginContainer" *ngIf="user">
     <div>
         <img class="logo" alt="Netflix Logo"
             src="https://res.cloudinary.com/dahw90b2z/image/upload/v1667982530/logo_cfqupd.png" />
     </div>
     <div class="bgContainer">
         <h1 class="signInHeading">Sign up</h1>
+        <!-- 
+        <div>
+            <input type="text" name="givenName" [(ngModel)]="user.givenName" placeholder="first name" />
+            <input type="text" name="familyName" [(ngModel)]="user.familyName" placeholder="Last name" />
+            <input type="text" name="email" [(ngModel)]="user.email" placeholder="Email address " />
+            <input [type]="user.showPassword ? 'text': 'password'" />
+        </div> -->
 
-        <form [formGroup]="signUpForm" class="loginForm" (ngSubmit)="onSubmit()">
+        <form *ngIf="!isConfirm" [formGroup]="signUpForm" class="loginForm" (ngSubmit)="onSubmit()">
             <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
                 <strong>Error: {{errorMsg}}</strong>
             </div>
             <div>
-                <input type='text' formControlName="name" class="inputField" ngModel matInput placeholder="Enter Name">
-                <p class="error-msg"
+                <input type='text' formControlName="givenName" class="inputField" [(ngModel)]="user.givenName"
+                    placeholder="Enter Name">
+                <!-- <p class="error-msg"
                     *ngIf="signUpForm.controls['name'].dirty && signUpForm.hasError('required','name')">
                     *Name
-                    Required</p>
+                    Required</p> -->
             </div>
             <div>
-
-                <input type='password' class="inputField" formControlName="password" ngModel matInput
-                    placeholder="Enter Password">
-
-                <p class="error-msg"
-                    *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required','password')">
-                    *Password
-                    Required</p>
+                <input type='text' formControlName="familyName" class="inputField" [(ngModel)]="user.familyName"
+                    placeholder="Last Name">
+                <!-- <p class="error-msg"
+                    *ngIf="signUpForm.controls['familyName'].dirty && signUpForm.hasError('required','familyName')">
+                    *Name
+                    Required</p> -->
             </div>
             <div>
-
-                <input type='text' class="inputField" formControlName="email" ngModel matInput
+                <input type='text' class="inputField" formControlName="email" [(ngModel)]="user.email"
                     placeholder="Enter Email">
-
-                <p class="error-msg"
+                <!-- <p class="error-msg"
                     *ngIf="signUpForm.controls['email'].dirty && signUpForm.hasError('required','email')">
                     *Email
-                    Required</p>
+                    Required</p> -->
             </div>
+            <div>
+                <input [type]="user.showPassword ? 'text': 'password'" class="inputField" formControlName="password"
+                    [(ngModel)]="user.password" placeholder="Enter Password">
+                <!-- <p class="error-msg"
+                    *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required','password')">
+                    *Password
+                    Required</p> -->
+            </div>
+
+            <div>
+                <input type="checkbox" class="inputField" [checked]="user.showPassword" formControlName="showPassword"
+                    (change)="user.showPassword = !user.showPassword"> show Password
+            </div>
+
             <div>
                 <button [disabled]="!signUpForm.valid" type="submit" class="signInBtn" mat-raised-button
                     color="warn">Sign up</button>
                 <p class="account-desc-text">Already have Account? <a class="auth-toggle-link" (click)="onLogin()">login
                         here</a></p>
             </div>
+
+
+
         </form>
+
+        <div *ngIf="isConfirm" class="successContainer">
+            <h1 class="successText">Enter Code</h1>
+            <p class="successText">A Verification Code Sent to {{user.email}}</p>
+            <div class="codeContainer">
+                <input type="text" class="inputField" name="verificationCode" [(ngModel)]="user.verificationCode"
+                    placeholder="Enter the Verification Code">
+            </div>
+            <button (click)="confirmSignup()" class="btn">CONFIRM</button>
+        </div>
+
     </div>
     <footer class="footer">
         <p class="call-text">Questions? Call 000-800-040-1843</p>

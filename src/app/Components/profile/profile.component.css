@@ -92,8 +92,13 @@
     min-width: 350px;
 }
 
+.field {
+    padding: 20px;
+}
+
 .pp {
-    height: 30px;
+    height: 50px;
+    border-radius: 40%;
 }
 
 .logo {
@@ -153,6 +158,8 @@
 .inputField {
     height: 40px;
     margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border: none;
     outline: none;
     width: 300px;

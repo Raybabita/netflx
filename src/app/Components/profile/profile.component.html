@@ -8,10 +8,10 @@
         <hr class="horizontal">
 
         <form [formGroup]="userform" class="loginForm" (ngSubmit)="onSubmit()">
-            <p>Edit Mode:
+            <p class="field">Edit Mode:
                 <span [ngClass]="{trueMode:editMode, falseMode:!editMode}"> {{editMode}}</span>
             </p>
-            <div>
+            <div class="field">
                 <label for="name">Name:</label>
                 <span *ngIf="!editMode" class="value">{{this.userData?.displayName}}</span>
                 <div *ngIf="editMode">
@@ -23,7 +23,7 @@
                         Required</p>
                 </div>
             </div>
-            <div>
+            <div class="field">
                 <label for="profilepicUrl">Profile Picture:</label>
                 <img *ngIf="!editMode" class="pp" src="{{this.userData?.photoUrl}}" />
                 <div *ngIf="editMode">

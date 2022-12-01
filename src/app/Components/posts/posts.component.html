@@ -1,0 +1,9 @@
+<div>
+    <h1>Comments</h1>
+    <form [formGroup]="commentform" (ngSubmit)="onsubmit()">
+        <hr>
+        <textarea formControlName="comment" cols="50" rows="5" type="text"></textarea>
+        <button class="btn">share</button>
+        <hr>
+    </form>
+</div>

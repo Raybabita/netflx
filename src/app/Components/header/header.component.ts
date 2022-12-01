@@ -31,12 +31,15 @@ export class HeaderComponent implements OnInit {
   }
 
   getdata() {
-    this.auth.getUserProfile(this.token).subscribe(res => {
-      console.log("header", res)
-      this.userData = res.users?.[0];
-      console.log(this.userData?.photoUrl)
-    })
+
   }
+  // getdata() {
+  //   this.auth.getUserProfile(this.token).subscribe(res => {
+  //     console.log("header", res)
+  //     this.userData = res.users?.[0];
+  //     console.log(this.userData?.photoUrl)
+  //   })
+  // }
   onSearch() {
     this.route.navigate(['movieSearchList'])
   }
@@ -63,7 +66,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.auth.signOut()
+    // this.auth.signOut()
     this.route.navigate(['/login'])
   }
 

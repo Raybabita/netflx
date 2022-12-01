@@ -87,6 +87,11 @@
     min-width: 310px;
 }
 
+.accountrecovery {
+    background-color: #fff;
+    margin: 10px;
+}
+
 .ggsignInBtn {
     /* margin-top: 10px; */
     display: flex;
@@ -214,4 +219,41 @@
     .signInBtn {
         min-width: 200px;
     }
+}
+
+.successContainer {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 4px 8px 0px;
+    border-radius: 8px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 35%;
+    max-width: 500px;
+    min-width: 450px;
+    margin: 50px;
+}
+
+.successText {
+    color: #1cad39;
+}
+
+.btn {
+    font-size: 14px;
+    outline: none;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    background-color: #3b82f6;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
 }

@@ -37,56 +37,62 @@ export class ProfileComponent implements OnInit {
         this.editMode = false;
       }
     })
-
-
   }
   onEdit() {
-    console.log('edit click')
-    this.auth.getUserProfile(this.token).subscribe(res => {
-      console.log("get user data from profile", res)
-      this.userData = res.users?.[0];
-      console.log(this.userData)
-      if (this.editMode == true) {
-        this.userform.setValue({
-          name: this.userData.displayName,
-          profilepicUrl: this.userData.photoUrl
-        })
-      }
-
-    })
   }
-
   getuserData() {
-    this.auth.getUserProfile(this.token).subscribe(res => {
-      console.log("get user data from profile", res)
-      this.userData = res.users?.[0];
-      console.log(this.userData)
-      this.userform.setValue({
-        name: this.userData.displayName,
-        profilepicUrl: this.userData.photoUrl
-      })
 
-    })
   }
+  // onEdit() {
+  //   console.log('edit click')
+  //   this.auth.getUserProfile(this.token).subscribe(res => {
+  //     console.log("get user data from profile", res)
+  //     this.userData = res.users?.[0];
+  //     console.log(this.userData)
+  //     if (this.editMode == true) {
+  //       this.userform.setValue({
+  //         name: this.userData.displayName,
+  //         profilepicUrl: this.userData.photoUrl
+  //       })
+  //     }
+
+  //   })
+  // }
+
+
+  // getuserData() {
+  //   this.auth.getUserProfile(this.token).subscribe(res => {
+  //     console.log("get user data from profile", res)
+  //     this.userData = res.users?.[0];
+  //     console.log(this.userData)
+  //     this.userform.setValue({
+  //       name: this.userData.displayName,
+  //       profilepicUrl: this.userData.photoUrl
+  //     })
+
+  //   })
+  // }
 
   logout() {
     localStorage.clear()
     this.route.navigate(['/login'])
   }
-
-
   onSubmit() {
 
-    // console.log(this.userform.value)
-    // const updateData = console.log({ token: this.token, ...this.userform.value })
-    const updateData = { token: this.token, ...this.userform.value };
-    this.auth.updateProfile(updateData).subscribe(res => {
-      console.log(res)
-      this.getuserData()
-    }, err => {
-      console.log(err)
-    })
   }
+
+  // onSubmit() {
+
+  //   // console.log(this.userform.value)
+  //   // const updateData = console.log({ token: this.token, ...this.userform.value })
+  //   const updateData = { token: this.token, ...this.userform.value };
+  //   this.auth.updateProfile(updateData).subscribe(res => {
+  //     console.log(res)
+  //     this.getuserData()
+  //   }, err => {
+  //     console.log(err)
+  //   })
+  // }
 
 
 
