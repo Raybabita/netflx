@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, } from '@angular/router';
 import { authUser } from 'src/app/Model/awsuserauth';
+import { Auth } from 'aws-amplify';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -21,6 +22,11 @@ export class ForgotpasswordComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router, private formBuilder: FormBuilder) { }
   token = JSON.parse(localStorage.getItem('userDetails') || '{}')._token;
   ngOnInit(): void {
+    Auth.currentAuthenticatedUser().then((res) => {
+      if (res) {
+        this.router.navigate(['mainpage'])
+      }
+    });
     this.userform = this.formBuilder.group({
       verificationCode: [''],
       newPassword: ['', Validators.required],

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MovieserviceService } from 'src/app/Services/movieservice.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { authUser } from 'src/app/Model/awsuserauth';
+import { Auth } from 'aws-amplify';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    Auth.currentAuthenticatedUser().then((res) => {
+      if (res) {
+        this.router.navigate(['mainpage'])
+      }
+    });
     this.user = {} as authUser;
+
   }
 
   loginBtnclicked() {

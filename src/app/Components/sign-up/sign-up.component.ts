@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 
 import { ObjectExpression } from 'mongoose';
 import { authUser } from 'src/app/Model/awsuserauth';
+import { Auth } from 'aws-amplify';
 
 
 @Component({
@@ -36,6 +37,11 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    Auth.currentAuthenticatedUser().then((res) => {
+      if (res) {
+        this.router.navigate(['mainpage'])
+      }
+    });
     this.user = {} as authUser;
     this.isConfirm = false;
 

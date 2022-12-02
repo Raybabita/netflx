@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   token = JSON.parse(localStorage.getItem('userDetails') || '{}')._token;
 
   constructor(private auth: AuthService, private route: Router, private formBuilder: FormBuilder, private activateRoute: ActivatedRoute) {
-    this.getuserData();
+    // this.getuserData();
   }
   onDiscard() {
     this.route.navigate([], { queryParams: { EditMode: null } })
@@ -37,6 +37,7 @@ export class ProfileComponent implements OnInit {
         this.editMode = false;
       }
     })
+    this.getUserDetails();
   }
   onEdit() {
   }
@@ -79,6 +80,25 @@ export class ProfileComponent implements OnInit {
   }
   onSubmit() {
 
+  }
+
+  private getUserDetails() {
+    this.auth.getUser().then((user: any) => {
+      if (user) {
+        this.userData = user?.attributes;
+
+        console.log("this is user from aws", user)
+        console.log("this is user Email", this.userData)
+      } else {
+        this.route.navigate(['login'])
+      }
+    })
+  }
+
+  signOutWithCognito() {
+    this.auth.signOut().then(() => {
+      this.route.navigate(['login'])
+    })
   }
 
   // onSubmit() {

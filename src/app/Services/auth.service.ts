@@ -7,11 +7,13 @@ import { __values } from 'tslib';
 import { AuthSignupLoginResponse } from '../Model/auth-response';
 import { Users } from '../Model/user';
 import { authUser } from '../Model/awsuserauth'
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  user = new BehaviorSubject<authUser>(null!);
   constructor(private http: HttpClient) {
     Amplify.configure({
       Auth: environment.cognito
@@ -35,14 +37,17 @@ export class AuthService {
 
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
+
   }
   public signIn(user: authUser): Promise<any> {
-    return Auth.signIn(user.email, user.password)
+    return Auth.signIn(user.email, user.password).then((res) => {
+      localStorage.setItem("userToken", res.signInUserSession.idToken.jwtToken)
+    })
   }
+
   public signOut(): Promise<any> {
     return Auth.signOut();
   }
-
 
   public forgotPassword(user: authUser): Promise<any> {
     return Auth.forgotPassword(user.email)
@@ -54,6 +59,15 @@ export class AuthService {
 
 
 
+
+
+  // private authenticationUser(email: any, userId: any, token: any, expiresIn: any) {
+  //   const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+  //   const user = new Users(email, userId, token, expirationDate);
+  //   this.user.next(user);//stroring data in subject
+  //   console.log(" fetch user Details", user);
+  //   localStorage.setItem("userDetails", JSON.stringify(user));
+  // }
 
 
 

@@ -12,8 +12,14 @@
                 <span [ngClass]="{trueMode:editMode, falseMode:!editMode}"> {{editMode}}</span>
             </p>
             <div class="field">
-                <label for="name">Name:</label>
-                <span *ngIf="!editMode" class="value">{{this.userData?.displayName}}</span>
+                <label *ngIf="!editMode" for="email">Email:</label>
+                <span *ngIf="!editMode" id="email" class="value">{{this.userData?.email}}</span><br>
+                <label *ngIf="!editMode" for="emailStatus">Email Verified:</label>
+                <span *ngIf="!editMode" if="emailStatus" class="value">{{this.userData?.email_verified}}</span><br>
+                <label *ngIf="!editMode" for="fullname">full Name: </label>
+                <span *ngIf="!editMode" id="fullname" class="value">{{this.userData?.family_name}}
+                    {{this.userData?.given_name}}</span><br>
+
                 <div *ngIf="editMode">
                     <input type='text' formControlName="name" class="inputField" ngModel matInput
                         placeholder="Enter Name">
@@ -29,11 +35,13 @@
                 <div *ngIf="editMode">
                     <input type='text' class="inputField" formControlName="profilepicUrl" ngModel matInput
                         placeholder="Enter profilepicUrl">
-
                     <p class="error-msg"
                         *ngIf="userform.controls['profilepicUrl'].dirty && userform.hasError('required','profilepicUrl')">
                         *profilepicUrl
                         Required</p>
+                </div>
+                <div>
+                    <button type="button" (click)="signOutWithCognito()">Logout</button>
                 </div>
             </div>
             <div class="btnContainer" *ngIf="editMode">
