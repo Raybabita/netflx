@@ -37,8 +37,16 @@ export class AuthService {
 
   public getUser(): Promise<any> {
     return Auth.currentUserInfo();
-
   }
+
+  public updateUser(data: any): Promise<any> {
+    return Auth.currentAuthenticatedUser().then((user) => {
+      Auth.updateUserAttributes(user, {
+        profilepic: data.profilepic
+      })
+    })
+  }
+
   public signIn(user: authUser): Promise<any> {
     return Auth.signIn(user.email, user.password).then((res) => {
       localStorage.setItem("userToken", res.signInUserSession.idToken.jwtToken)

@@ -4,7 +4,9 @@
             src="https://res.cloudinary.com/dahw90b2z/image/upload/v1667982530/logo_cfqupd.png" />
     </div>
     <div class="bgContainer">
-        <h1 class="signInHeading">Sign up</h1>
+        <div class="recoveryContainer">
+            <h1 class="signInHeading">Sign up</h1>
+        </div>
         <!-- 
         <div>
             <input type="text" name="givenName" [(ngModel)]="user.givenName" placeholder="first name" />
@@ -50,9 +52,9 @@
                     Required</p> -->
             </div>
 
-            <div>
-                <input type="checkbox" class="inputField" [checked]="user.showPassword" formControlName="showPassword"
-                    (change)="user.showPassword = !user.showPassword"> show Password
+            <div class="showPasswordContainer">
+                <input type="checkbox" [checked]="user.showPassword" formControlName="showPassword"
+                    (change)="user.showPassword = !user.showPassword"> <span class="showtxt">Show Password</span>
             </div>
 
             <div>

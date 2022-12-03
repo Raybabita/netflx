@@ -4,7 +4,9 @@
             src="https://res.cloudinary.com/dahw90b2z/image/upload/v1667982530/logo_cfqupd.png" />
     </div>
     <div class="bgContainer" *ngIf="!isForgotPassword">
-        <h1 class="signInHeading">Sign In</h1>
+        <div class="recoveryContainer">
+            <h1 class="signInHeading">Sign In</h1>
+        </div>
         <div [formGroup]="loginForm" class="loginForm">
             <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
                 <strong>Error: {{errorMsg}}</strong>
@@ -24,9 +26,9 @@
                     *Password
                     Required</p> -->
             </div>
-            <div>
-                <input type="checkbox" class="inputField" [checked]="user.showPassword" formControlName="showPassword"
-                    (change)="user.showPassword = !user.showPassword"> show Password
+            <div class="showPasswordContainer">
+                <input type="checkbox" class="InputCheck" [checked]="user.showPassword" formControlName="showPassword"
+                    (change)="user.showPassword = !user.showPassword"> <span class="showtxt">Show Password</span>
 
             </div>
             <div>
@@ -35,17 +37,21 @@
                     In</button>
             </div>
         </div>
-
-        <button class="account-desc-text"> <a class="auth-toggle-link" (click)="onforgotPassowordBtnClicked()">
-                Forgot Password?</a></button>
-        <p class="account-desc-text">Don't have an account? <a class="auth-toggle-link" (click)="onSignup()">
-                Sign up</a></p>
-
+        <div class="forgottextContainer">
+            <button class="forgotbtn"> <a (click)="onforgotPassowordBtnClicked()">
+                    Forgot Password?</a></button><br>
+            <p>Don't have an account? <a class="auth-toggle-link" (click)="onSignup()">
+                    Sign up</a></p>
+        </div>
     </div>
     <div *ngIf="!success">
         <div class="accountrecovery" *ngIf="isForgotPassword">
-            <h1 class="text">Account Recovery</h1>
-            <p class="successText">A Verification Code Sent to {{user.email}}</p>
+            <div class="recoveryContainer">
+                <h1 class="text">Account Recovery</h1>
+                <p class="successText">A Verification Code Sent to
+                    <br /> {{user.email}}
+                </p>
+            </div>
             <div [formGroup]="loginForm" class="loginForm">
                 <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
                     <strong>Error: {{errorMsg}}</strong>
@@ -56,15 +62,15 @@
                 </div>
                 <div>
                     <input [type]="user.showPassword ? 'text': 'password'" class="inputField"
-                        formControlName="newPassword" [(ngModel)]="newPassword" placeholder="Enter Password">
+                        formControlName="newPassword" [(ngModel)]="newPassword" placeholder="Enter A New Password">
                     <!-- <p class="error-msg"
                     *ngIf="loginForm.controls['newPassword'].dirty && loginForm.hasError('required','newPassword')">
                     *Password
                     Required</p> -->
                 </div>
-                <div>
-                    <input type="checkbox" class="inputField" [checked]="user.showPassword"
-                        formControlName="showPassword" (change)="user.showPassword = !user.showPassword"> show Password
+                <div class="showPasswordContainer">
+                    <input type="checkbox" [checked]="user.showPassword" formControlName="showPassword"
+                        (change)="user.showPassword = !user.showPassword"> <span class="showtxt">Show Password</span>
                 </div>
                 <div>
                     <button class="signInBtn" type="submit" color="warn" (click)="newPasswordSubmit()">

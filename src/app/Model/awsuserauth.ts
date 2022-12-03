@@ -4,5 +4,6 @@ export interface authUser {
     givenName: string,
     familyName: string,
     verificationCode: string,
-    showPassword: boolean
+    showPassword: boolean,
+    imageUrl: string
 }

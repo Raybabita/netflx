@@ -47,6 +47,9 @@ import { ChangepasswordComponent } from './Components/changepassword/changepassw
 import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
 import { PostsComponent } from './Components/posts/posts.component';
 
+import { Amplify } from 'aws-amplify';
+import { ProfileimageComponent } from './Components/profileimage/profileimage.component';
+
 
 @NgModule({
   declarations: [
@@ -79,6 +82,7 @@ import { PostsComponent } from './Components/posts/posts.component';
     ChangepasswordComponent,
     ForgotpasswordComponent,
     PostsComponent,
+    ProfileimageComponent,
 
 
   ],
@@ -100,6 +104,7 @@ import { PostsComponent } from './Components/posts/posts.component';
     VgOverlayPlayModule,
     MatDialogModule,
     VgBufferingModule,
+
     MatSidenavModule,
     ReactiveFormsModule
   ],

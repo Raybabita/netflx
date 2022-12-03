@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
   userform!: FormGroup;
   userData!: any;
   editMode: Boolean = false;
@@ -42,6 +43,9 @@ export class ProfileComponent implements OnInit {
   onEdit() {
   }
   getuserData() {
+  }
+
+  onImageUploaded(e: Event) {
 
   }
   // onEdit() {
@@ -86,12 +90,16 @@ export class ProfileComponent implements OnInit {
     this.auth.getUser().then((user: any) => {
       if (user) {
         this.userData = user?.attributes;
-
         console.log("this is user from aws", user)
         console.log("this is user Email", this.userData)
       } else {
         this.route.navigate(['login'])
       }
+    })
+  }
+  updateUser() {
+    this.auth.updateUser(this.userform).then((res) => {
+      console.log(res)
     })
   }
 

@@ -39,7 +39,7 @@
     /* background-color: rgba(0, 0, 0, .75); */
     border-radius: 4px;
     display: flex;
-    padding: 60px;
+    padding: 20px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -219,6 +219,28 @@
     border: none;
     color: #ffffff;
     cursor: pointer;
+}
+
+.showPasswordContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    /* background-color: red; */
+    justify-content: flex-start;
+    margin: 10px;
+}
+
+.recoveryContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.showtxt {
+    margin-left: 10px;
 }
 
 .codeContainer {
