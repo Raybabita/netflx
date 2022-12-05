@@ -64,9 +64,9 @@
                     <input [type]="user.showPassword ? 'text': 'password'" class="inputField"
                         formControlName="newPassword" [(ngModel)]="newPassword" placeholder="Enter A New Password">
                     <!-- <p class="error-msg"
-                    *ngIf="loginForm.controls['newPassword'].dirty && loginForm.hasError('required','newPassword')">
-                    *Password
-                    Required</p> -->
+                        *ngIf="loginForm.control s['newPassword'].dirty && loginForm.hasError('required','newPassword')">
+                        *Password
+                        Required</p> -->
                 </div>
                 <div class="showPasswordContainer">
                     <input type="checkbox" [checked]="user.showPassword" formControlName="showPassword"
