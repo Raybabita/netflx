@@ -13,7 +13,7 @@ import { authUser } from '../Model/awsuserauth'
 })
 export class AuthService {
 
-  user = new BehaviorSubject<authUser>(null!);
+
   constructor(private http: HttpClient) {
     Amplify.configure({
       Auth: environment.cognito
@@ -24,7 +24,6 @@ export class AuthService {
       username: user.email,
       password: user.password,
       attributes: {
-        email: user.email,
         given_name: user.givenName,
         family_name: user.familyName
       }
@@ -39,12 +38,14 @@ export class AuthService {
     return Auth.currentUserInfo();
   }
 
-  public updateUser(data: any): Promise<any> {
+  public updateUser(data: authUser): Promise<any> {
     return Auth.currentAuthenticatedUser().then((user) => {
       Auth.updateUserAttributes(user, {
-        profilepic: data.profilepic
+        given_name: data.givenName
       })
+      console.log("from update request", data)
     })
+
   }
 
   public signIn(user: authUser): Promise<any> {

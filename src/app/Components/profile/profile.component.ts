@@ -18,16 +18,19 @@ export class ProfileComponent implements OnInit {
   token = JSON.parse(localStorage.getItem('userDetails') || '{}')._token;
 
   constructor(private auth: AuthService, private route: Router, private formBuilder: FormBuilder, private activateRoute: ActivatedRoute) {
-    // this.getuserData();
+
   }
   onDiscard() {
     this.route.navigate([], { queryParams: { EditMode: null } })
   }
 
+
+
+
+
   ngOnInit(): void {
     this.userform = this.formBuilder.group({
-      'name': ['', Validators.required],
-      'profilepicUrl': ['', Validators.required],
+      'givenName': ['', Validators.required],
     })
     this.activateRoute.queryParamMap.subscribe(res => {
       // console.log(res.get('EditMode'))
@@ -40,14 +43,18 @@ export class ProfileComponent implements OnInit {
     })
     this.getUserDetails();
   }
+
+
+
   onEdit() {
+
   }
   getuserData() {
   }
 
-  onImageUploaded(e: Event) {
 
-  }
+
+
   // onEdit() {
   //   console.log('edit click')
   //   this.auth.getUserProfile(this.token).subscribe(res => {
@@ -82,9 +89,13 @@ export class ProfileComponent implements OnInit {
     localStorage.clear()
     this.route.navigate(['/login'])
   }
-  onSubmit() {
 
+  onSubmit() {
+    this.auth.updateUser(this.userform.value).then((res) => {
+      console.log("user updated data", res)
+    })
   }
+
 
   private getUserDetails() {
     this.auth.getUser().then((user: any) => {
@@ -97,11 +108,7 @@ export class ProfileComponent implements OnInit {
       }
     })
   }
-  updateUser() {
-    this.auth.updateUser(this.userform).then((res) => {
-      console.log(res)
-    })
-  }
+
 
   signOutWithCognito() {
     this.auth.signOut().then(() => {
