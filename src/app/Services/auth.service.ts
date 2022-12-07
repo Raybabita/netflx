@@ -41,7 +41,8 @@ export class AuthService {
   public updateUser(data: authUser): Promise<any> {
     return Auth.currentAuthenticatedUser().then((user) => {
       Auth.updateUserAttributes(user, {
-        given_name: data.givenName
+        given_name: data.givenName,
+        picture: data.imageUrl
       })
       console.log("from update request", data)
     })

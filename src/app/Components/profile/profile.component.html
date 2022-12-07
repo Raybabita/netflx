@@ -21,6 +21,7 @@
                 </span><br>
                 <label *ngIf="!editMode" for="fullname"> full Name: </label>
                 <span *ngIf="!editMode" id="fullname" class="value"> {{this.userData?.given_name}}
+                    <img src="{{this.userData?.picture}}" width="100" height="100" />
                 </span><br>
 
                 <div *ngIf="editMode">
@@ -31,6 +32,16 @@
                         *Name
                         Required</p>
                 </div>
+
+                <div *ngIf="editMode">
+                    <input type='file' formControlName="imageUrl" class="inputField" ngModel
+                        (change)="onChangeFile($event)">
+                    <button (click)="handleSendFile()">Send file</button>
+
+                </div>
+
+
+
             </div>
             <div class="field">
                 <!-- <label for="profilepicUrl">Profile Picture:</label> -->
@@ -45,7 +56,7 @@
 
                 <!-- </div> -->
                 <div>
-                    <button type="button" (click)="signOutWithCognito()">Logout</button>
+                    <button class="btn" *ngIf="!editMode" type="button" (click)="signOutWithCognito()">Logout</button>
                 </div>
             </div>
             <div class="btnContainer" *ngIf="editMode">

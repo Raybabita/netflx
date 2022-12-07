@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
+import AWSS3UploadAshClient from 'aws-s3-upload-ash';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
-
+import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+  fileSelected: any = null;
   userform!: FormGroup;
   userData!: any;
   editMode: Boolean = false;
@@ -24,13 +24,36 @@ export class ProfileComponent implements OnInit {
     this.route.navigate([], { queryParams: { EditMode: null } })
   }
 
+  config = {
+    bucketName: 'aws-s3-upload-image',
+    dirName: 'media', /* optional - when use: e.g BUCKET_ROOT/dirName/fileName.extesion */
+    region: 'us-east-1',
+    accessKeyId: environment.AWS_ACCESS_KEY,
+    secretAccessKey: environment.AWS_SECRET_KEY,
+    s3Url: 'https://aws-s3-upload-image.s3.amazonaws.com/'
+  }
 
 
+  S3CustomClient: AWSS3UploadAshClient = new AWSS3UploadAshClient(this.config);
+  onChangeFile(event: any) {
+    console.log(event.target.files[0])
+    this.fileSelected = event.target.files[0]
+  }
 
+
+  async handleSendFile() {
+    console.log(environment)
+    console.log("handleSendFile")
+    await this.S3CustomClient
+      .uploadFile(this.fileSelected, this.fileSelected.type, undefined, this.fileSelected.name,)
+      .then((data: UploadResponse) => console.log("successful upload", data))
+      .catch((err: any) => console.error("error while uploading", err))
+  }
 
   ngOnInit(): void {
     this.userform = this.formBuilder.group({
       'givenName': ['', Validators.required],
+      'imageUrl': ['']
     })
     this.activateRoute.queryParamMap.subscribe(res => {
       // console.log(res.get('EditMode'))
@@ -84,6 +107,18 @@ export class ProfileComponent implements OnInit {
 
   //   })
   // }
+  url = "https://res.cloudinary.com/dahw90b2z/image/upload/v1668097628/im_jvwl1k.webp"
+  onChangeSelectedFile(e: any) {
+    let file = e.target?.files?.[0];
+    if (file) {
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      };
+    }
+
+  }
 
   logout() {
     localStorage.clear()
@@ -91,6 +126,8 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
+    const user = this.userform.value;
+    console.log(user)
     this.auth.updateUser(this.userform.value).then((res) => {
       console.log("user updated data", res)
     })

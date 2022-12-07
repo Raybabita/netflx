@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaqComponent } from './Components/home/faq/faq.component';
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import AWSS3UploadAshClient from 'aws-s3-upload-ash';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
@@ -81,6 +82,7 @@ import { ProfileimageComponent } from './Components/profileimage/profileimage.co
     UpdateprofileComponent,
     ChangepasswordComponent,
     ForgotpasswordComponent,
+
     PostsComponent,
     ProfileimageComponent,
 
