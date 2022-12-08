@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
 import { environment } from 'src/environments/environment';
+
+import { Storage, Amplify } from 'aws-amplify';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -35,6 +37,7 @@ export class ProfileComponent implements OnInit {
 
 
   S3CustomClient: AWSS3UploadAshClient = new AWSS3UploadAshClient(this.config);
+
   onChangeFile(event: any) {
     console.log(event.target.files[0])
     this.fileSelected = event.target.files[0]
@@ -65,6 +68,7 @@ export class ProfileComponent implements OnInit {
       }
     })
     this.getUserDetails();
+
   }
 
 
